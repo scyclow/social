@@ -1,0 +1,26 @@
+
+.container > * {
+  border: 1px solid black;
+  border-bottom: 0;
+}
+
+.header {
+  padding: 5px;
+  min-width: 100px;
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.content {
+  /*padding: 5px;*/
+}
+
+.item {
+  cursor: pointer;
+  padding: 5px;
+}
+
+.item:hover {
+  background-color: #ddd;
+}
