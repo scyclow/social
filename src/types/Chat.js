@@ -4,16 +4,16 @@ import { type User, type UserId, type Users } from './User'
 
 export opaque type ChatId: string = string;
 
-export type Chat = {
-  id: ChatId,
-  participantId: UserId,
-  history: Array<ChatMessage>
-};
-
 export type ChatMessage = {
   sender: UserId,
   time: Date,
   message: string
+};
+
+export type Chat = {
+  id: ChatId,
+  participantId: UserId,
+  history: Array<ChatMessage>
 };
 
 export type Chats = {

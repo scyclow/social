@@ -4,8 +4,8 @@ import React, { Component } from 'react';
 import ChatList from '../ChatList'
 import ChatBox from '../ChatBox'
 import styles from './styles.module.css'
-import { type UserId, createUserId } from '../types/User'
-import { type ChatId, createChatId } from '../types/Chat'
+import { createUserId } from 'types/User'
+import { type ChatId, createChatId } from 'types/Chat'
 
 
 const chatMockData = [

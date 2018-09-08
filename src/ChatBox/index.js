@@ -1,7 +1,7 @@
 // @flow
 import React, { Component } from 'react';
 import styles from './styles.module.css'
-import { type ChatPopulated } from '../types/Chat'
+import { type ChatPopulated } from 'types/Chat'
 
 type ChatBoxProps = {
   onClose: () => mixed,
