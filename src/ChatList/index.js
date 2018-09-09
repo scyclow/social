@@ -25,7 +25,7 @@ const ChatListHeader = ({ updateClose, availableChats, closed }) => (
 
 const ChatListContent = ({ loading, error, closed, availableChats, onSelectChat }) => {
   if (closed) {
-    return <div></div>
+    return ''
   }
   return (
     <div>

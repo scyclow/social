@@ -1,5 +1,6 @@
 // @flow
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 import styles from './styles.module.css'
 import { type ChatPopulated } from 'types/Chat'
 
@@ -20,9 +21,13 @@ const ChatBoxHeader = ({ name, onClose, onMinimize }) => (
   </div>
 )
 
-const ChatBoxContent = ({ history }) => (
-  <div className={styles.content}>
-    {history.map(h => <div>{JSON.stringify(h)}</div>)}
+const ChatBoxContent = ({ history, getRef }) => (
+  <div className={styles.content} ref={getRef}>
+    {history.map((item, i) => (
+      <div key={i}>
+        <div>{item.sender}: {item.message}</div>
+      </div>
+    ))}
   </div>
 )
 
@@ -30,10 +35,16 @@ class ChatBoxInput extends Component<*, *> {
   state = { value: '' }
 
   onChange = e => this.setState({ value: e.target.value })
+  onEnter = e => {
+    if (e.key === 'Enter') {
+      this.props.sendMessage(this.state.value)
+      this.setState({ value: '' })
+    }
+  }
 
   render() {
     return (
-      <input className={styles.input} onKeyPress={e => e.key === 'Enter' && this.props.sendMessage(e.target.value)}/>
+      <input className={styles.input} onChange={this.onChange} value={this.state.value} onKeyPress={this.onEnter}/>
     )
   }
 }
@@ -44,11 +55,19 @@ export default class ChatBox extends Component<ChatBoxProps, ChatBoxState> {
     minimized: false
   }
 
+  historyRef: any;
+
   componentDidMount() {
     console.log('mount')
   }
 
   onMinimize = () => this.setState(state => ({ ...state, minimized: !state.minimized }))
+
+  sendMessage = (msg: string) => {
+    this.props.sendMessage(msg)
+    const historyRef: any = ReactDOM.findDOMNode(this.historyRef);
+    historyRef.scrollTop = historyRef.scrollHeight;
+  }
 
   render() {
     const { chat, onClose, sendMessage } = this.props
@@ -56,7 +75,7 @@ export default class ChatBox extends Component<ChatBoxProps, ChatBoxState> {
     return (
       <div className={styles.container}>
         <ChatBoxHeader name={chat.participant.name} onClose={onClose} onMinimize={this.onMinimize}/>
-        {!minimized && <ChatBoxContent history={chat.history}/>}
+        {!minimized && <ChatBoxContent history={chat.history} getRef={el => this.historyRef }/>}
         {!minimized && <ChatBoxInput sendMessage={sendMessage} />}
       </div>
     )

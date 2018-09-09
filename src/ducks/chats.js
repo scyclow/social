@@ -2,14 +2,19 @@
 
 import { type ChatId, type Chats, createChatId as id } from 'types/Chat'
 import { createUserId as uid, type UserId } from 'types/User'
+import { type Action } from 'types/redux'
 import { createReducer } from 'utils/redux'
+
+/* Note:
+  - chat behavior should be decided by generators
+*/
 
 const defaultState: Chats = {
   [id('chat1').toString()]: {
     id: id('chat1'),
     history: [
       {
-        sender: 'blah',
+        sender: uid('user1'),
         time: new Date(),
         message: 'hello this is user1'
       }
