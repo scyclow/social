@@ -5,7 +5,11 @@ import ChatList from '../ChatList'
 import ChatBox from '../ChatBox'
 import styles from './styles.module.css'
 import { createUserId } from 'types/User'
-import { type ChatId, createChatId } from 'types/Chat'
+import { type ChatId, type ChatPopulated, createChatId, populateChat } from 'types/Chat'
+import { connect } from 'react-redux';
+import { mapValues, values } from 'lodash'
+import { actions as chatActions } from 'ducks/chats'
+
 
 
 const chatMockData = [
@@ -65,27 +69,49 @@ const chatMockData = [
   },
 ]
 
-type Props = {};
-type State = { selected: ?ChatId };
+type Props = {
+  chats: { [id: string]: ChatPopulated },
+  newChatMessage: (string, string) => mixed
+};
+type State = { selected: ?ChatPopulated };
 
-export default class ChatModule extends Component<Props, State> {
+class ChatModule extends Component<Props, State> {
   state = {
     selected: null
   }
+
+  select = (id: ChatId) => {
+    const selected = this.props.chats[id];
+    this.setState({ selected })
+  }
+
   render() {
+    const { selected } = this.state
+    const { chats, newChatMessage } = this.props
+    console.log(selected)
     return (
       <div className={styles.container}>
-        {this.state.selected && (
+        {selected && (
           <ChatBox
             onClose={() => this.setState({ selected: null })}
-            chat={chatMockData.find(d => d.id === this.state.selected)}
+            chat={selected}
+            sendMessage={msg => newChatMessage(selected.participant.id, selected.id, msg)}
           />
         )}
         <ChatList
-          onSelectChat={selected => this.setState({ selected })}
-          availableChats={chatMockData}
+          onSelectChat={this.select}
+          availableChats={values(chats)}
         />
       </div>
     )
   }
 }
+
+export default connect(
+  state => ({
+    chats: mapValues(state.chats, chat => populateChat(chat, state.users))
+  }),
+  {
+    newChatMessage: chatActions.newChatMessage
+  }
+)(ChatModule)

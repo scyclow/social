@@ -1,11 +1,15 @@
 [ignore]
 
 [include]
+flow-typed/
 
 [libs]
 
 [lints]
 
 [options]
+module.name_mapper='types' -> '<PROJECT_ROOT>/src/types'
+module.name_mapper='ducks' -> '<PROJECT_ROOT>/src/ducks'
+module.name_mapper='utils' -> '<PROJECT_ROOT>/src/utils'
 
 [strict]
