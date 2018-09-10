@@ -10,10 +10,12 @@
   display: flex;
   justify-content: space-between;
   cursor: pointer;
+  user-select: none;
+
 }
 
 .content {
-  /*padding: 5px;*/
+  user-select: none;
 }
 
 .item {
@@ -23,4 +25,12 @@
 
 .item:hover {
   background-color: #ddd;
+}
+
+.list {
+  min-height: 100px;
+}
+
+.minimized {
+  display: none;
 }

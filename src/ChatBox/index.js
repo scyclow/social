@@ -1,6 +1,5 @@
 // @flow
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 import styles from './styles.module.css'
 import { type ChatPopulated } from 'types/Chat'
 
@@ -8,21 +7,18 @@ type ChatBoxProps = {
   onClose: () => mixed,
   sendMessage: (string) => mixed,
   chat: ChatPopulated,
-};
-
-type ChatBoxState = {
-  minimized: boolean
+  onMinimize: boolean => mixed
 };
 
 const ChatBoxHeader = ({ name, onClose, onMinimize }) => (
-  <div className={styles.header} onClick={onMinimize}>
-    <span>{name}</span>
+  <div className={styles.header}>
+    <span className={styles.headerName} onClick={onMinimize}>{name}</span>
     <span onClick={onClose}>X</span>
   </div>
 )
 
-const ChatBoxContent = ({ history, getRef }) => (
-  <div className={styles.content} ref={getRef}>
+const ChatBoxContent = ({ history }) => (
+  <div className={styles.content}>
     {history.map((item, i) => (
       <div key={i}>
         <div>{item.sender}: {item.message}</div>
@@ -50,33 +46,38 @@ class ChatBoxInput extends Component<*, *> {
 }
 
 
-export default class ChatBox extends Component<ChatBoxProps, ChatBoxState> {
-  state = {
-    minimized: false
-  }
-
-  historyRef: any;
+export default class ChatBox extends Component<ChatBoxProps> {
 
   componentDidMount() {
-    console.log('mount')
+    this.updateScroll()
   }
 
-  onMinimize = () => this.setState(state => ({ ...state, minimized: !state.minimized }))
+  componentDidUpdate() {
+    this.updateScroll()
+  }
+
+  updateScroll() {
+    setTimeout(() => {
+      const $el = document.getElementsByClassName(styles.content)[0]
+      if ($el) $el.scrollTop = $el.scrollHeight;
+    }, 5)
+  }
 
   sendMessage = (msg: string) => {
     this.props.sendMessage(msg)
-    const historyRef: any = ReactDOM.findDOMNode(this.historyRef);
-    historyRef.scrollTop = historyRef.scrollHeight;
   }
 
   render() {
-    const { chat, onClose, sendMessage } = this.props
-    const { minimized } = this.state
+    const { chat, onClose, onMinimize, sendMessage } = this.props
     return (
       <div className={styles.container}>
-        <ChatBoxHeader name={chat.participant.name} onClose={onClose} onMinimize={this.onMinimize}/>
-        {!minimized && <ChatBoxContent history={chat.history} getRef={el => this.historyRef }/>}
-        {!minimized && <ChatBoxInput sendMessage={sendMessage} />}
+        <ChatBoxHeader
+          name={chat.participant.name}
+          onClose={onClose}
+          onMinimize={() => onMinimize(!chat.minimized)}
+        />
+        {!chat.minimized && <ChatBoxContent history={chat.history} />}
+        {!chat.minimized && <ChatBoxInput sendMessage={sendMessage} />}
       </div>
     )
   }

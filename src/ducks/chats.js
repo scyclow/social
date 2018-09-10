@@ -7,6 +7,7 @@ import { createReducer } from 'utils/redux'
 
 /* Note:
   - chat behavior should be decided by generators
+  - current state of conversation is event sourced from chat history.
 */
 
 const defaultState: Chats = {
@@ -19,31 +20,42 @@ const defaultState: Chats = {
         message: 'hello this is user1'
       }
     ],
+    open: true,
+    minimized: true,
     participantId: uid('user1')
   },
   [id('chat2').toString()]: {
     id: id('chat2'),
-    history: [],
+    history: [
+      {
+        sender: uid('user2'),
+        time: new Date(),
+        message: 'hello this is user2'
+      }
+    ],
+    open: true,
+    minimized: false,
     participantId: uid('user2')
   },
   [id('chat3').toString()]: {
     id: id('chat3'),
-    history: [],
+    history: [
+      {
+        sender: uid('user3'),
+        time: new Date(),
+        message: 'hello this is user3'
+      }
+    ],
+    open: false,
+    minimized: true,
     participantId: uid('user3')
-  },
-  [id('chat4').toString()]: {
-    id: id('chat4'),
-    history: [],
-    participantId: uid('user4')
-  },
-  [id('chat5').toString()]: {
-    id: id('chat5'),
-    history: [],
-    participantId: uid('user5')
   },
 }
 
 const NEW_CHAT_MESSSAGE = 'users/NEW_CHAT_MESSSAGE';
+const OPEN_CHAT_BOX = 'users/OPEN_CHAT_BOX';
+const CLOSE_CHAT_BOX = 'users/CLOSE_CHAT_BOX';
+const MINIMIZE_CHAT_BOX = 'users/MINIMIZE_CHAT_BOX';
 
 type NewChatMessageAction = Action<{
   id: ChatId,
@@ -52,24 +64,74 @@ type NewChatMessageAction = Action<{
   message: string
 }>;
 
+type OpenChatBoxAction = Action<{
+  id: ChatId,
+}>;
+
+type CloseChatBoxAction = Action<{
+  id: ChatId,
+}>;
+
+type MinimizeChatBoxAction = Action<{
+  id: ChatId,
+  minimized: boolean
+}>;
+
 export const actions = {
   newChatMessage(sender: UserId, id: ChatId, message: string): NewChatMessageAction {
     return {
       type: NEW_CHAT_MESSSAGE,
       payload: { id, sender, time: new Date(), message }
     }
-  }
+  },
+  openChatBox(id: ChatId): OpenChatBoxAction {
+    return {
+      type: OPEN_CHAT_BOX,
+      payload: { id }
+    }
+  },
+  closeChatBox(id: ChatId): CloseChatBoxAction {
+    return {
+      type: CLOSE_CHAT_BOX,
+      payload: { id }
+    }
+  },
+  minimizeChatBox(id: ChatId, minimized: boolean): MinimizeChatBoxAction {
+    return {
+      type: MINIMIZE_CHAT_BOX,
+      payload: { id, minimized }
+    }
+  },
+
 }
 
 export const reducer = createReducer({
-  [NEW_CHAT_MESSSAGE]: (state, { payload: { id, sender, time, message } }) => {
-    console.log(state, {sender, time, message, id})
-    return ({
-      ...state,
-      [id]: {
-        ...state[id],
-        history: [...state[id].history, { sender, time, message }]
-      }
-    })
-  }
+  [NEW_CHAT_MESSSAGE]: (state: Chats, { payload: { id, sender, time, message } }) => ({
+    ...state,
+    [id]: {
+      ...state[id],
+      history: [...state[id].history, { sender, time, message }]
+    }
+  }),
+  [OPEN_CHAT_BOX]: (state: Chats, { payload: { id } }) => ({
+    ...state,
+    [id]: {
+      ...state[id],
+      open: true
+    }
+  }),
+  [CLOSE_CHAT_BOX]: (state: Chats, { payload: { id } }) => ({
+    ...state,
+    [id]: {
+      ...state[id],
+      open: false
+    }
+  }),
+  [MINIMIZE_CHAT_BOX]: (state: Chats, { payload: { id, minimized } }) =>  ({
+    ...state,
+    [id]: {
+      ...state[id],
+      minimized
+    }
+  })
 }, defaultState)

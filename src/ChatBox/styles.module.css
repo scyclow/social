@@ -4,11 +4,19 @@
 }
 
 .header {
-  padding: 5px;
   min-width: 100px;
   display: flex;
   justify-content: space-between;
   cursor: pointer;
+  user-select: none;
+}
+
+.header > * {
+  padding: 5px;
+}
+
+.headerName {
+  width: 100%;
 }
 
 .content {

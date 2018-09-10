@@ -1,6 +1,7 @@
 // @flow
 
 import { type User, type UserId, type Users } from './User'
+import { omit } from 'lodash'
 
 export opaque type ChatId: string = string;
 
@@ -13,6 +14,8 @@ export type ChatMessage = {
 export type Chat = {
   id: ChatId,
   participantId: UserId,
+  open: boolean,
+  minimized: boolean,
   history: Array<ChatMessage>
 };
 
@@ -22,14 +25,15 @@ export type Chats = {
 
 export type ChatPopulated = {
   id: ChatId,
+  open: boolean,
+  minimized: boolean,
   history: Array<ChatMessage>,
   participant: User
 };
 
 export function populateChat(chat: Chat, users: Users): ChatPopulated {
-  const { id, history } = chat
   const participant = users[chat.participantId]
-  return { id, history, participant }
+  return { ...omit(chat, 'participantId'), participant }
 }
 
 export const createChatId = (id: string): ChatId => id
