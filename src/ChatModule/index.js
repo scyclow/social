@@ -12,6 +12,7 @@ import { actions as chatModuleActions } from './duck'
 
 type Props = {
   chats: { [id: string]: ChatPopulated },
+  chatStates: { [id: string]: 'open' | 'minimized' | 'closed' },
   newChatMessage: (string, string, string) => mixed,
   listMinimized: boolean,
   minimizeChatList: () => mixed,
@@ -24,6 +25,7 @@ class ChatModule extends Component<Props, *> {
   render() {
     const {
       chats,
+      chatStates,
       listMinimized,
       newChatMessage,
       closeChatBox,
@@ -31,7 +33,7 @@ class ChatModule extends Component<Props, *> {
       minimizeChatBox,
       minimizeChatList
     } = this.props
-    const openChats = filter(chats, chat => chat.open)
+    const openChats = filter(chats, chat => chatStates[chat.id] === 'open' || chatStates[chat.id] === 'minimized')
 
     return (
       <div className={styles.container}>
@@ -40,6 +42,7 @@ class ChatModule extends Component<Props, *> {
             key={chat.id}
             onClose={() => closeChatBox(chat.id)}
             onMinimize={(minimized) => minimizeChatBox(chat.id, minimized)}
+            minimized={chatStates[chat.id] === 'minimized'}
             chat={chat}
             sendMessage={msg => newChatMessage('user0', chat.id, msg)}
           />
@@ -59,12 +62,13 @@ export default connect(
   state => ({
     chats: mapValues(state.chats, chat => populateChat(chat, state.users)),
     listMinimized: state.chatModule.listMinimized,
+    chatStates: state.chatModule.chatStates
   }),
   {
     newChatMessage: chatActions.newChatMessage,
-    openChatBox: chatActions.openChatBox,
-    closeChatBox: chatActions.closeChatBox,
-    minimizeChatBox: chatActions.minimizeChatBox,
+    openChatBox: chatModuleActions.openChatBox,
+    closeChatBox: chatModuleActions.closeChatBox,
+    minimizeChatBox: chatModuleActions.minimizeChatBox,
     minimizeChatList: chatModuleActions.minimizeChatList,
   }
 )(ChatModule)

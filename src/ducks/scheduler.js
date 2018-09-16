@@ -29,7 +29,7 @@ const HANDLE_OUTSTANDING_JOBS = 'scheduler/HANDLE_OUTSTANDING_JOBS'
 
 export const actions = {
   schedule(action: Action<*>, ms: number) {
-    return (dispatch: Dispatch): Action<Job> => {
+    return (dispatch: Dispatch) => {
       const id = Math.random()
 
       const timeoutId = setTimeout(() => {
@@ -52,7 +52,7 @@ export const actions = {
   },
 
   markJobComplete(id: number | string) {
-    return (dispatch: Dispatch, getState: GetState): any => {
+    return (dispatch: Dispatch, getState: GetState) => {
       const { scheduler } = getState()
       const job = scheduler.jobs[id]
       if (job) clearTimeout(job.timeoutId)

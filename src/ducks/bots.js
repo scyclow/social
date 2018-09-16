@@ -8,7 +8,7 @@ import { actions as chatActions } from './chats'
 import { actions as schedulerActions } from './scheduler'
 
 export type BotsState = {
-  [ChatId]: BotState<mixed>
+  [string | ChatId]: BotState<mixed>
 };
 
 const defaultState: BotsState = {}
@@ -36,7 +36,7 @@ export const actions = {
       if (response) {
         dispatch(schedulerActions.schedule(
           chatActions.rawChatMessage(botId, chatId, response),
-          400
+          4000
         ))
       }
     }

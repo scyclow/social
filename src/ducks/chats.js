@@ -15,8 +15,6 @@ const defaultState: Chats = {
   [id('chat1').toString()]: {
     id: id('chat1'),
     history: [],
-    open: false,
-    minimized: false,
     botId: uid('bot1')
   },
   // [id('chat2').toString()]: {
@@ -48,10 +46,7 @@ const defaultState: Chats = {
 }
 
 
-const NEW_CHAT_MESSSAGE = 'users/NEW_CHAT_MESSSAGE';
-const OPEN_CHAT_BOX = 'users/OPEN_CHAT_BOX';
-const CLOSE_CHAT_BOX = 'users/CLOSE_CHAT_BOX';
-const MINIMIZE_CHAT_BOX = 'users/MINIMIZE_CHAT_BOX';
+const NEW_CHAT_MESSSAGE = 'chats/NEW_CHAT_MESSSAGE';
 
 // type NewChatMessageAction = Action<{
 //   id: ChatId,
@@ -60,18 +55,7 @@ const MINIMIZE_CHAT_BOX = 'users/MINIMIZE_CHAT_BOX';
 //   message: string
 // }>;
 
-type OpenChatBoxAction = Action<{
-  id: ChatId,
-}>;
 
-type CloseChatBoxAction = Action<{
-  id: ChatId,
-}>;
-
-type MinimizeChatBoxAction = Action<{
-  id: ChatId,
-  minimized: boolean
-}>;
 
 export const actions = {
   rawChatMessage(sender: UserId, chatId: ChatId, message: string) {
@@ -90,24 +74,7 @@ export const actions = {
       dispatch(actions.rawChatMessage(sender, chatId, message))
     }
   },
-  openChatBox(id: ChatId): OpenChatBoxAction {
-    return {
-      type: OPEN_CHAT_BOX,
-      payload: { id }
-    }
-  },
-  closeChatBox(id: ChatId): CloseChatBoxAction {
-    return {
-      type: CLOSE_CHAT_BOX,
-      payload: { id }
-    }
-  },
-  minimizeChatBox(id: ChatId, minimized: boolean): MinimizeChatBoxAction {
-    return {
-      type: MINIMIZE_CHAT_BOX,
-      payload: { id, minimized }
-    }
-  },
+
 
 }
 
@@ -119,25 +86,4 @@ export const reducer = createReducer({
       history: [...state[id].history, { sender, time, message }]
     }
   }),
-  [OPEN_CHAT_BOX]: (state: Chats, { payload: { id } }) => ({
-    ...state,
-    [id]: {
-      ...state[id],
-      open: true
-    }
-  }),
-  [CLOSE_CHAT_BOX]: (state: Chats, { payload: { id } }) => ({
-    ...state,
-    [id]: {
-      ...state[id],
-      open: false
-    }
-  }),
-  [MINIMIZE_CHAT_BOX]: (state: Chats, { payload: { id, minimized } }) =>  ({
-    ...state,
-    [id]: {
-      ...state[id],
-      minimized
-    }
-  })
 }, defaultState)

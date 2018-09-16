@@ -7,6 +7,7 @@ type ChatBoxProps = {
   onClose: () => mixed,
   sendMessage: (string) => mixed,
   chat: ChatPopulated,
+  minimized: boolean,
   onMinimize: boolean => mixed
 };
 
@@ -68,16 +69,16 @@ export default class ChatBox extends Component<ChatBoxProps> {
   }
 
   render() {
-    const { chat, onClose, onMinimize, sendMessage } = this.props
+    const { chat, minimized, onClose, onMinimize, sendMessage } = this.props
     return (
       <div className={styles.container}>
         <ChatBoxHeader
           name={chat.bot.name}
           onClose={onClose}
-          onMinimize={() => onMinimize(!chat.minimized)}
+          onMinimize={() => onMinimize(!minimized)}
         />
-        {!chat.minimized && <ChatBoxContent history={chat.history} />}
-        {!chat.minimized && <ChatBoxInput sendMessage={sendMessage} />}
+        {!minimized && <ChatBoxContent history={chat.history} />}
+        {!minimized && <ChatBoxInput sendMessage={sendMessage} />}
       </div>
     )
   }

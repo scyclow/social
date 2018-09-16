@@ -12,9 +12,8 @@ export type BotState<P> = $Shape<{
 }>;
 
 export function getNextBotState(botId: string, message: string, botState: BotState<*>) {
-  console.log(botId)
   const bot = botMap[botId];
-  if (!bot) return { newState: botState }
+  if (!bot) return { newState: botState, response: null }
   const {response, botState: newState} = bot(message, botState)
 
   return {response, newState}

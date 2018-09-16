@@ -14,8 +14,6 @@ export type ChatMessage = {
 export type Chat = {
   id: ChatId,
   botId: UserId,
-  open: boolean,
-  minimized: boolean,
   history: Array<ChatMessage>
 };
 
@@ -25,8 +23,6 @@ export type Chats = {
 
 export type ChatPopulated = {
   id: ChatId,
-  open: boolean,
-  minimized: boolean,
   history: Array<ChatMessage>,
   bot: User
 };
