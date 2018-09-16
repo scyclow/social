@@ -1,52 +1,51 @@
 // @flow
 
 import { type ChatId } from 'types/Chat'
-import { type Action } from 'types/redux'
+import { type Action, type GetState, type Dispatch } from 'types/redux'
 import { createReducer } from 'utils/redux'
+import { getNextBotState, type BotState } from 'bots'
+import { actions as chatActions } from './chats'
 
-type BotVars = {
-  next: string,
-  [botVar: string]: mixed
+export type BotsState = {
+  [ChatId]: BotState
 };
 
-type BotState = {
-  [ChatId]: BotVars
-};
+const defaultState: BotsState = {}
 
-const defaultState: BotState = {}
+const UPDATE_BOT_STATE = 'bots/UPDATE_BOT_STATE'
 
-const START_BOT = 'bots/START_BOT'
-const UPDATE_BOT_VARS = 'bots/UPDATE_BOT_VARS'
-
-type StartBotAction = Action<{ id: ChatId, next: string }>;
-type UpdateBotVarsAction = Action<{ id: ChatId, next: string }>;
+type UpdateBotStateAction = Action<{ id: ChatId, state: Object }>;
+type MessageToBotAction = Action<{ }>;
 
 export const actions = {
-  startBot(id: ChatId, next: string): StartBotAction {
+
+  updateBotState(id: ChatId, state: BotState): UpdateBotStateAction {
     return {
-      type: START_BOT,
-      payload: { id, next }
+      type: UPDATE_BOT_STATE,
+      payload: { id, state }
     }
   },
-  updateBotVars(id: ChatId, vars: BotVars): UpdateBotVarsAction {
-    return {
-      type: UPDATE_BOT_VARS,
-      payload: { id, vars }
+
+  messageToBot(botId: string, chatId: ChatId, message: string) {
+    return (dispatch: Dispatch, getState: GetState) => {
+      const { bots } = getState()
+      const botState = bots[botId]
+      const {response, newState} = getNextBotState(botId, message, botState || {})
+      dispatch(actions.updateBotState(botId, newState))
+      if (response) {
+        setTimeout(() => {
+          dispatch(chatActions.newChatMessage(botId, chatId, response))
+        } , 100)
+      }
     }
   }
 }
 
 export const reducer = createReducer({
-  [START_BOT]: (state: BotState, { payload: { id, next } }: StartBotAction) => {
+  [UPDATE_BOT_STATE]: (state: BotsState, { payload }: UpdateBotStateAction) => {
     return {
       ...state,
-      [id]: { next }
-    }
-  },
-  [UPDATE_BOT_VARS]: (state: BotState, { payload: { id, vars } }: StartBotAction) => {
-    return {
-      ...state,
-      [id]: { ...state[id], ...vars }
+      [payload.id]: { ...state[payload.id], ...payload.state }
     }
   }
-})
+}, defaultState)

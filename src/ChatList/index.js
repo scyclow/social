@@ -28,8 +28,8 @@ const ChatListContent = ({ minimized, availableChats, onSelectChat }) => {
           <ChatListItem
             key={chat.id}
             chatId={chat.id}
-            name={chat.participant.name}
-            onlineNow={chat.participant.onlineNow}
+            name={chat.bot.name}
+            onlineNow={chat.bot.onlineNow}
             onSelect={onSelectChat}
           />
         ))}

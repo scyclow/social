@@ -13,7 +13,7 @@ export type ChatMessage = {
 
 export type Chat = {
   id: ChatId,
-  participantId: UserId,
+  botId: UserId,
   open: boolean,
   minimized: boolean,
   history: Array<ChatMessage>
@@ -28,12 +28,12 @@ export type ChatPopulated = {
   open: boolean,
   minimized: boolean,
   history: Array<ChatMessage>,
-  participant: User
+  bot: User
 };
 
 export function populateChat(chat: Chat, users: Users): ChatPopulated {
-  const participant = users[chat.participantId]
-  return { ...omit(chat, 'participantId'), participant }
+  const bot = users[chat.botId]
+  return { ...omit(chat, 'botId'), bot }
 }
 
 export const createChatId = (id: string): ChatId => id

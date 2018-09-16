@@ -5,28 +5,28 @@ import { createReducer } from 'utils/redux'
 import { type Action } from 'types/redux'
 
 const defaultState: Users = {
-  [id('user1').toString()]: {
-    id: id('user1'),
+  [id('bot1').toString()]: {
+    id: id('bot1'),
     name: 'steve',
     onlineNow: true
   },
-  [id('user2').toString()]: {
-    id: id('user2'),
+  [id('bot2').toString()]: {
+    id: id('bot2'),
     name: 'tom',
     onlineNow: false
   },
-  [id('user3').toString()]: {
-    id: id('user3'),
+  [id('bot3').toString()]: {
+    id: id('bot3'),
     name: 'max',
     onlineNow: false
   },
-  [id('user4').toString()]: {
-    id: id('user4'),
+  [id('bot4').toString()]: {
+    id: id('bot4'),
     name: 'peter',
     onlineNow: true
   },
-  [id('user5').toString()]: {
-    id: id('user5'),
+  [id('bot5').toString()]: {
+    id: id('bot5'),
     name: 'bil',
     onlineNow: true
   },

@@ -2,8 +2,9 @@
 
 import { type ChatId, type Chats, createChatId as id } from 'types/Chat'
 import { createUserId as uid, type UserId } from 'types/User'
-import { type Action } from 'types/redux'
+import { type Action, type Dispatch, type GetState } from 'types/redux'
 import { createReducer } from 'utils/redux'
+import { actions as botActions } from './bots'
 
 /* Note:
   - chat behavior should be decided by generators
@@ -13,43 +14,37 @@ import { createReducer } from 'utils/redux'
 const defaultState: Chats = {
   [id('chat1').toString()]: {
     id: id('chat1'),
-    history: [
-      {
-        sender: uid('user1'),
-        time: new Date(),
-        message: 'hello this is user1'
-      }
-    ],
-    open: true,
-    minimized: true,
-    participantId: uid('user1')
-  },
-  [id('chat2').toString()]: {
-    id: id('chat2'),
-    history: [
-      {
-        sender: uid('user2'),
-        time: new Date(),
-        message: 'hello this is user2'
-      }
-    ],
-    open: true,
-    minimized: false,
-    participantId: uid('user2')
-  },
-  [id('chat3').toString()]: {
-    id: id('chat3'),
-    history: [
-      {
-        sender: uid('user3'),
-        time: new Date(),
-        message: 'hello this is user3'
-      }
-    ],
+    history: [],
     open: false,
-    minimized: true,
-    participantId: uid('user3')
+    minimized: false,
+    botId: uid('bot1')
   },
+  // [id('chat2').toString()]: {
+  //   id: id('chat2'),
+  //   history: [
+  //     {
+  //       sender: uid('bot2'),
+  //       time: new Date(),
+  //       message: 'hello this is bot2'
+  //     }
+  //   ],
+  //   open: true,
+  //   minimized: false,
+  //   botId: uid('bot2')
+  // },
+  // [id('chat3').toString()]: {
+  //   id: id('chat3'),
+  //   history: [
+  //     {
+  //       sender: uid('bot3'),
+  //       time: new Date(),
+  //       message: 'hello this is bot3'
+  //     }
+  //   ],
+  //   open: false,
+  //   minimized: true,
+  //   botId: uid('bot3')
+  // },
 }
 
 const NEW_CHAT_MESSSAGE = 'users/NEW_CHAT_MESSSAGE';
@@ -78,10 +73,17 @@ type MinimizeChatBoxAction = Action<{
 }>;
 
 export const actions = {
-  newChatMessage(sender: UserId, id: ChatId, message: string): NewChatMessageAction {
-    return {
-      type: NEW_CHAT_MESSSAGE,
-      payload: { id, sender, time: new Date(), message }
+  newChatMessage(sender: UserId, chatId: ChatId, message: string) {
+    return (dispatch: Dispatch, getState: GetState) => {
+      if (sender === 'user0') {
+        const { chats } = getState()
+        const { botId } = chats[chatId]
+        dispatch(botActions.messageToBot(botId, chatId, message))
+      }
+      dispatch({
+        type: NEW_CHAT_MESSSAGE,
+        payload: { id: chatId, sender, time: new Date(), message }
+      })
     }
   },
   openChatBox(id: ChatId): OpenChatBoxAction {

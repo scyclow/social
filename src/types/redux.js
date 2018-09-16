@@ -2,6 +2,7 @@
 import { type Chats } from 'types/Chat'
 import { type Users } from 'types/User'
 import { type ChatModuleState } from '../ChatModule/duck'
+import { type BotsState } from '../ducks/Bots'
 import type { Store as ReduxStore, Dispatch as ReduxDispatch } from 'redux';
 
 export type ReduxInitAction = { type: '@@INIT' };
@@ -9,8 +10,11 @@ export type ReduxInitAction = { type: '@@INIT' };
 export type State = {
   chats: Chats,
   users: Users,
-  chatModule: ChatModuleState
+  chatModule: ChatModuleState,
+  bots: BotsState
 };
+
+export type GetState = () => State
 
 export type Action<P> = {
   type: string,

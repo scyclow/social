@@ -72,7 +72,7 @@ export default class ChatBox extends Component<ChatBoxProps> {
     return (
       <div className={styles.container}>
         <ChatBoxHeader
-          name={chat.participant.name}
+          name={chat.bot.name}
           onClose={onClose}
           onMinimize={() => onMinimize(!chat.minimized)}
         />

@@ -1,17 +1,20 @@
 // @flow
 
-import { createStore, combineReducers, compose } from 'redux'
+import { createStore, combineReducers, compose, applyMiddleware } from 'redux'
+import thunk from 'redux-thunk'
 import persistState from 'redux-localstorage'
 import { type Store } from 'types/redux'
 import { reducer as chats } from './chats'
 import { reducer as users } from './users'
+import { reducer as bots } from './bots'
 import { reducer as chatModule } from '../ChatModule/duck'
 
 const enhancer = compose(
+  applyMiddleware(thunk),
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
-  persistState()
+  persistState(),
 )
 
-const rootReducer = combineReducers({ users, chats, chatModule })
+const rootReducer = combineReducers({ users, chats, bots, chatModule })
 const store: Store = createStore(rootReducer, enhancer)
 export default store
