@@ -47,17 +47,18 @@ const defaultState: Chats = {
   // },
 }
 
+
 const NEW_CHAT_MESSSAGE = 'users/NEW_CHAT_MESSSAGE';
 const OPEN_CHAT_BOX = 'users/OPEN_CHAT_BOX';
 const CLOSE_CHAT_BOX = 'users/CLOSE_CHAT_BOX';
 const MINIMIZE_CHAT_BOX = 'users/MINIMIZE_CHAT_BOX';
 
-type NewChatMessageAction = Action<{
-  id: ChatId,
-  sender: UserId,
-  time: Date,
-  message: string
-}>;
+// type NewChatMessageAction = Action<{
+//   id: ChatId,
+//   sender: UserId,
+//   time: Date,
+//   message: string
+// }>;
 
 type OpenChatBoxAction = Action<{
   id: ChatId,
@@ -73,6 +74,12 @@ type MinimizeChatBoxAction = Action<{
 }>;
 
 export const actions = {
+  rawChatMessage(sender: UserId, chatId: ChatId, message: string) {
+    return {
+      type: NEW_CHAT_MESSSAGE,
+      payload: { id: chatId, sender, time: Date.now(), message }
+    }
+  },
   newChatMessage(sender: UserId, chatId: ChatId, message: string) {
     return (dispatch: Dispatch, getState: GetState) => {
       if (sender === 'user0') {
@@ -80,10 +87,7 @@ export const actions = {
         const { botId } = chats[chatId]
         dispatch(botActions.messageToBot(botId, chatId, message))
       }
-      dispatch({
-        type: NEW_CHAT_MESSSAGE,
-        payload: { id: chatId, sender, time: new Date(), message }
-      })
+      dispatch(actions.rawChatMessage(sender, chatId, message))
     }
   },
   openChatBox(id: ChatId): OpenChatBoxAction {

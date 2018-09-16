@@ -7,6 +7,7 @@ import { type Store } from 'types/redux'
 import { reducer as chats } from './chats'
 import { reducer as users } from './users'
 import { reducer as bots } from './bots'
+import { reducer as scheduler, actions as schedulerActions } from './scheduler'
 import { reducer as chatModule } from '../ChatModule/duck'
 
 const enhancer = compose(
@@ -15,6 +16,9 @@ const enhancer = compose(
   persistState(),
 )
 
-const rootReducer = combineReducers({ users, chats, bots, chatModule })
+const rootReducer = combineReducers({ users, chats, bots, scheduler, chatModule })
 const store: Store = createStore(rootReducer, enhancer)
+
+store.dispatch(schedulerActions.handleOutstandingJobs())
+
 export default store

@@ -7,7 +7,7 @@ export opaque type ChatId: string = string;
 
 export type ChatMessage = {
   sender: UserId,
-  time: Date,
+  time: number,
   message: string
 };
 

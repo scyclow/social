@@ -6,12 +6,12 @@ const botMap = {
   bot1
 }
 
-export type BotState = {
+export type BotState<P> = $Shape<{
   previous: ?string,
-  [string]: mixed
-};
+  ...P
+}>;
 
-export function getNextBotState(botId: string, message: string, botState: BotState) {
+export function getNextBotState(botId: string, message: string, botState: BotState<*>) {
   console.log(botId)
   const bot = botMap[botId];
   if (!bot) return { newState: botState }

@@ -3,7 +3,6 @@
 import  {type BotState} from './index'
 import { sample } from 'lodash'
 
-
 const actions = {
   greeting(userMsg, botState) {
     return {
@@ -36,7 +35,12 @@ const actions = {
   }
 }
 
-export default (userMsg: string, botState: BotState) => {
+type User1State = BotState<{
+  activeAction: $Keys<typeof actions>,
+  name: string
+}>;
+
+export default (userMsg: string, botState: User1State) => {
   const activeAction = botState.activeAction || 'greeting'
   return actions[activeAction](userMsg, botState)
 }
