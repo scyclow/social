@@ -13,7 +13,8 @@ export type State = {
   users: Users,
   chatModule: ChatModuleState,
   scheduler: SchedulerState,
-  bots: BotsState
+  bots: BotsState,
+  router: any
 };
 
 export type GetState = () => State;

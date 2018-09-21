@@ -12,6 +12,7 @@
   position: fixed;
   display: flex;
   align-items: center;
+  justify-content: space-between;
 }
 
 .title {
@@ -20,4 +21,8 @@
   border: 1px solid;
   padding: 5px 10px;
   padding-bottom: 0;
+}
+
+.link {
+  text-decoration: none;
 }

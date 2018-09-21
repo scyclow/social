@@ -2,6 +2,7 @@
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withRouter, Route, Switch } from 'react-router-dom'
 import { actions as schedulerActions } from 'ducks/scheduler'
 
 
@@ -23,7 +24,11 @@ class App extends Component<Props> {
       <div className="App">
         <Nav />
         <Body>
-          <div>this is the body</div>
+          <Switch>
+            <Route exact path="/" render={() => <div>this is the root</div>}/>
+            <Route path="/profile" render={() => <div>this is the profile</div>}/>
+          </Switch>
+
         </Body>
         <Chat />
       </div>
@@ -31,6 +36,8 @@ class App extends Component<Props> {
   }
 }
 
-export default connect(null, {
-  handleOutstandingJobs: schedulerActions.handleOutstandingJobs
-})(App);
+export default withRouter(
+  connect(null, {
+    handleOutstandingJobs: schedulerActions.handleOutstandingJobs
+  })(App)
+)

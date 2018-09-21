@@ -2,6 +2,8 @@
 
 import { createStore, combineReducers, compose, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
+import { createBrowserHistory } from 'history'
+import { connectRouter, routerMiddleware } from 'connected-react-router'
 import { type Store } from 'types/redux'
 import { reducer as chats } from './chats'
 import { reducer as users } from './users'
@@ -20,12 +22,24 @@ const saveState = (store: *) => (next: *) => (action: *) => {
 
 const getSavedState = () => JSON.parse(localStorage.getItem(REDUX_STATE) || '{}')
 
+export const history = createBrowserHistory()
+
 const enhancer = compose(
-  applyMiddleware(thunk, saveState),
+  applyMiddleware(thunk, saveState, routerMiddleware(history)),
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
 )
 
-const rootReducer = combineReducers({ users, chats, bots, scheduler, chatModule })
+const withHistory = connectRouter(history)
+
+const rootReducer = withHistory(
+  combineReducers({
+    users,
+    chats,
+    bots,
+    scheduler,
+    chatModule
+  })
+)
 const store: Store = createStore(rootReducer, getSavedState(), enhancer)
 
 export default store
