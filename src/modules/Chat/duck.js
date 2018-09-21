@@ -6,22 +6,29 @@ import { createReducer } from 'utils/redux'
 
 export type ChatModuleState = {
   listMinimized: boolean,
-  chatStates: {
-    [string | ChatId]: 'open' | 'minimized' | 'closed'
-  }
+  chats: {
+    [string | ChatId]: {
+      windowState: 'open' | 'minimized' | 'closed',
+      messageDraft: string
+    }
+  },
 };
 
 const defaultState: ChatModuleState = {
   listMinimized: true,
-  chatStates: {
-    chat1: 'closed'
-  }
+  chats: {
+    chat1: {
+      windowState: 'closed',
+      messageDraft: ''
+    }
+  },
 }
 
 const MINIMIZE_CHAT_LIST = 'chatModule/MINIMIZE_CHAT_LIST';
 const OPEN_CHAT_BOX = 'chatModule/OPEN_CHAT_BOX';
 const CLOSE_CHAT_BOX = 'chatModule/CLOSE_CHAT_BOX';
 const MINIMIZE_CHAT_BOX = 'chatModule/MINIMIZE_CHAT_BOX';
+const UPDATE_MESSAGE_DRAFT = 'chatModule/UPDATE_MESSAGE_DRAFT';
 
 type OpenChatBoxAction = Action<{
   id: ChatId,
@@ -33,7 +40,12 @@ type CloseChatBoxAction = Action<{
 
 type MinimizeChatBoxAction = Action<{
   id: ChatId,
-  chatState: 'minimized' | 'open'
+  windowState: 'minimized' | 'open'
+}>;
+
+type UpdateMessageDraftAction = Action<{
+  messageDraft: string,
+  id: ChatId
 }>;
 
 
@@ -61,9 +73,15 @@ export const actions = {
   minimizeChatBox(id: ChatId, minimized: boolean): MinimizeChatBoxAction {
     return {
       type: MINIMIZE_CHAT_BOX,
-      payload: { id, chatState: minimized ? 'minimized' : 'open' }
+      payload: { id, windowState: minimized ? 'minimized' : 'open' }
     }
   },
+  updateMessageDraft(id: ChatId, messageDraft: string): UpdateMessageDraftAction {
+    return {
+      type: UPDATE_MESSAGE_DRAFT,
+      payload: { messageDraft, id }
+    }
+  }
 }
 
 export const reducer = createReducer({
@@ -73,23 +91,42 @@ export const reducer = createReducer({
   }),
   [OPEN_CHAT_BOX]: (state: ChatModuleState, { payload: { id } }) => ({
     ...state,
-    chatStates: {
-      ...state.chatStates,
-      [id]: 'open'
+    chats: {
+      ...state.chats,
+      [id]: {
+        ...state.chats[id],
+        windowState: 'open'
+      }
     }
   }),
   [CLOSE_CHAT_BOX]: (state: ChatModuleState, { payload: { id } }) => ({
     ...state,
-    chatStates: {
-      ...state.chatStates,
-      [id]: 'closed'
+    chats: {
+      ...state.chats,
+      [id]: {
+        ...state.chats[id],
+        windowState: 'closed'
+      }
     }
   }),
-  [MINIMIZE_CHAT_BOX]: (state: ChatModuleState, { payload: { id, chatState } }) =>  ({
+  [MINIMIZE_CHAT_BOX]: (state: ChatModuleState, { payload: { id, windowState } }) =>  ({
     ...state,
-    chatStates: {
-      ...state.chatStates,
-      [id]: chatState
+    chats: {
+      ...state.chats,
+      [id]: {
+        ...state.chats[id],
+        windowState
+      }
+    }
+  }),
+  [UPDATE_MESSAGE_DRAFT]: (state: ChatModuleState, { payload: { id, messageDraft } }) =>  ({
+    ...state,
+    chats: {
+      ...state.chats,
+      [id]: {
+        ...state.chats[id],
+        messageDraft
+      }
     }
   })
 }, defaultState)

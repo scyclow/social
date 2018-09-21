@@ -1,5 +1,8 @@
 // @flow
-export opaque type UserId: string = string;
+
+// fuck it
+// export opaque type UserId: string = string;
+export type UserId = string;
 
 export type User = {
   id: UserId,

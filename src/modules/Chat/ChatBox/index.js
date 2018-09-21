@@ -7,8 +7,10 @@ type ChatBoxProps = {
   onClose: () => mixed,
   sendMessage: (string) => mixed,
   chat: ChatPopulated,
+  messageDraft: string,
   minimized: boolean,
-  onMinimize: boolean => mixed
+  onMinimize: boolean => mixed,
+  updateMessageDraft: (string, string) => mixed
 };
 
 const ChatBoxHeader = ({ name, onClose, onMinimize }) => (
@@ -22,26 +24,31 @@ const ChatBoxContent = ({ history }) => (
   <div className={styles.content}>
     {history.map((item, i) => (
       <div key={i}>
-        <div>{item.sender}: {item.message}</div>
+        <div className={styles.message}><strong>{item.sender}:</strong> {item.message}</div>
       </div>
     ))}
   </div>
 )
 
 class ChatBoxInput extends Component<*, *> {
-  state = { value: '' }
-
-  onChange = e => this.setState({ value: e.target.value })
+  onChange = e => this.props.updateMessageDraft(e.target.value)
   onEnter = e => {
-    if (e.key === 'Enter') {
-      this.props.sendMessage(this.state.value)
-      this.setState({ value: '' })
+    const { messageDraft, updateMessageDraft, sendMessage } = this.props
+    if (e.key === 'Enter' && !!messageDraft) {
+      sendMessage(messageDraft)
+      updateMessageDraft('')
     }
   }
 
   render() {
     return (
-      <input className={styles.input} onChange={this.onChange} value={this.state.value} onKeyPress={this.onEnter}/>
+      <input
+        className={styles.input}
+        onChange={this.onChange}
+        onKeyPress={this.onEnter}
+        value={this.props.messageDraft}
+        placeholder="Press Enter to Send"
+      />
     )
   }
 }
@@ -69,7 +76,15 @@ export default class ChatBox extends Component<ChatBoxProps> {
   }
 
   render() {
-    const { chat, minimized, onClose, onMinimize, sendMessage } = this.props
+    const {
+      chat,
+      minimized,
+      onClose,
+      onMinimize,
+      sendMessage,
+      updateMessageDraft,
+      messageDraft
+    } = this.props
     return (
       <div className={styles.container}>
         <ChatBoxHeader
@@ -78,7 +93,13 @@ export default class ChatBox extends Component<ChatBoxProps> {
           onMinimize={() => onMinimize(!minimized)}
         />
         {!minimized && <ChatBoxContent history={chat.history} />}
-        {!minimized && <ChatBoxInput sendMessage={sendMessage} />}
+        {!minimized && (
+          <ChatBoxInput
+            sendMessage={sendMessage}
+            messageDraft={messageDraft}
+            updateMessageDraft={msg => updateMessageDraft(chat.id, msg)}
+          />
+        )}
       </div>
     )
   }

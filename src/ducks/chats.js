@@ -2,14 +2,9 @@
 
 import { type ChatId, type Chats, createChatId as id } from 'types/Chat'
 import { createUserId as uid, type UserId } from 'types/User'
-import { type Action, type Dispatch, type GetState } from 'types/redux'
+import { type Dispatch, type GetState } from 'types/redux'
 import { createReducer } from 'utils/redux'
 import { actions as botActions } from './bots'
-
-/* Note:
-  - chat behavior should be decided by generators
-  - current state of conversation is event sourced from chat history.
-*/
 
 const defaultState: Chats = {
   [id('chat1').toString()]: {

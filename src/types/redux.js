@@ -1,9 +1,9 @@
 // @flow
 import { type Chats } from 'types/Chat'
 import { type Users } from 'types/User'
-import { type ChatModuleState } from '../ChatModule/duck'
-import { type BotsState } from '../ducks/bots'
-import { type SchedulerState } from '../ducks/scheduler'
+import { type ChatModuleState } from 'modules/Chat/duck'
+import { type BotsState } from 'ducks/bots'
+import { type SchedulerState } from 'ducks/scheduler'
 import type { Store as ReduxStore, Dispatch as ReduxDispatch } from 'redux';
 
 export type ReduxInitAction = { type: '@@INIT' };

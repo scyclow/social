@@ -3,7 +3,9 @@
 import { type User, type UserId, type Users } from './User'
 import { omit } from 'lodash'
 
-export opaque type ChatId: string = string;
+// fuck it
+// export opaque type ChatId: string = string;
+export type ChatId = string;
 
 export type ChatMessage = {
   sender: UserId,

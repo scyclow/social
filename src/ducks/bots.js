@@ -29,15 +29,42 @@ export const actions = {
   messageToBot(botId: string, chatId: ChatId, message: string) {
     return (dispatch: Dispatch, getState: GetState) => {
       const { bots } = getState()
-      const botState = bots[botId]
-      const {response, newState} = getNextBotState(botId, message, botState || {})
+      const { response, newState, followUps, wait } = getNextBotState({
+        botId,
+        chatId,
+        message,
+        dispatch,
+        getState,
+        botState: bots[botId] || {}
+      })
       dispatch(actions.updateBotState(botId, newState))
 
       if (response) {
         dispatch(schedulerActions.schedule(
           chatActions.rawChatMessage(botId, chatId, response),
-          4000
+          wait || 400
         ))
+      }
+
+      if (followUps) {
+        let accWait = 0;
+        followUps.forEach(followUp => {
+          accWait += (followUp.wait || 25)
+
+          if (followUp.newState) {
+            dispatch(schedulerActions.schedule(
+              actions.updateBotState(botId, followUp.newState),
+              accWait
+            ))
+          }
+
+          if (followUp.response) {
+            dispatch(schedulerActions.schedule(
+              chatActions.rawChatMessage(botId, chatId, followUp.response),
+              accWait
+            ))
+          }
+        })
       }
     }
   }

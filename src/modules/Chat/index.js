@@ -1,8 +1,8 @@
 // @flow
 
 import React, { Component } from 'react';
-import ChatList from '../ChatList'
-import ChatBox from '../ChatBox'
+import ChatList from './ChatList'
+import ChatBox from './ChatBox'
 import styles from './styles.module.css'
 import { type ChatId, type ChatPopulated, populateChat } from 'types/Chat'
 import { connect } from 'react-redux';
@@ -12,16 +12,22 @@ import { actions as chatModuleActions } from './duck'
 
 type Props = {
   chats: { [id: string]: ChatPopulated },
-  chatStates: { [id: string]: 'open' | 'minimized' | 'closed' },
+  chatStates: {
+    [id: string]: {
+      windowState: 'open' | 'minimized' | 'closed',
+      messageDraft: string
+    }
+  },
   newChatMessage: (string, string, string) => mixed,
   listMinimized: boolean,
   minimizeChatList: () => mixed,
   openChatBox: ChatId => mixed,
   closeChatBox: ChatId => mixed,
   minimizeChatBox: (ChatId, boolean) => mixed,
+  updateMessageDraft: (ChatId, string) => mixed
 };
 
-class ChatModule extends Component<Props, *> {
+class Chat extends Component<Props, *> {
   render() {
     const {
       chats,
@@ -31,9 +37,10 @@ class ChatModule extends Component<Props, *> {
       closeChatBox,
       openChatBox,
       minimizeChatBox,
-      minimizeChatList
+      minimizeChatList,
+      updateMessageDraft
     } = this.props
-    const openChats = filter(chats, chat => chatStates[chat.id] === 'open' || chatStates[chat.id] === 'minimized')
+    const openChats = filter(chats, chat => chatStates[chat.id].windowState === 'open' || chatStates[chat.id].windowState === 'minimized')
 
     return (
       <div className={styles.container}>
@@ -42,9 +49,11 @@ class ChatModule extends Component<Props, *> {
             key={chat.id}
             onClose={() => closeChatBox(chat.id)}
             onMinimize={(minimized) => minimizeChatBox(chat.id, minimized)}
-            minimized={chatStates[chat.id] === 'minimized'}
+            minimized={chatStates[chat.id].windowState === 'minimized'}
+            messageDraft={chatStates[chat.id].messageDraft}
             chat={chat}
             sendMessage={msg => newChatMessage('user0', chat.id, msg)}
+            updateMessageDraft={updateMessageDraft}
           />
         ))}
         <ChatList
@@ -61,8 +70,8 @@ class ChatModule extends Component<Props, *> {
 export default connect(
   state => ({
     chats: mapValues(state.chats, chat => populateChat(chat, state.users)),
+    chatStates: state.chatModule.chats,
     listMinimized: state.chatModule.listMinimized,
-    chatStates: state.chatModule.chatStates
   }),
   {
     newChatMessage: chatActions.newChatMessage,
@@ -70,5 +79,6 @@ export default connect(
     closeChatBox: chatModuleActions.closeChatBox,
     minimizeChatBox: chatModuleActions.minimizeChatBox,
     minimizeChatList: chatModuleActions.minimizeChatList,
+    updateMessageDraft: chatModuleActions.updateMessageDraft,
   }
-)(ChatModule)
+)(Chat)
