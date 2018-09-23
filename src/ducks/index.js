@@ -7,6 +7,7 @@ import { connectRouter, routerMiddleware } from 'connected-react-router'
 import { type Store } from 'types/redux'
 import { reducer as chats } from './chats'
 import { reducer as users } from './users'
+// $FlowFixMe
 import { reducer as bots } from './bots'
 import { reducer as scheduler } from './scheduler'
 import { reducer as chatModule } from 'modules/Chat/duck'

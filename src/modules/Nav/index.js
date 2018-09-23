@@ -15,6 +15,7 @@ class Nav extends Component<Props> {
             <div className={styles.title}>friendworld.social</div>
           </Link>
           <div className={styles.links}>
+            <Link to="/groups" className={styles.link}>Groups</Link>
             <Link to="/profile" className={styles.link}>Profile</Link>
           </div>
         </div>

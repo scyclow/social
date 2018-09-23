@@ -33,6 +33,7 @@ and depending on the info you give up, you see targetted ads:
   - camwhore
   - hotsauce
   - t shirts that you can actually buy
+  - web development services circa 1997 (j geoff, heaven's gate)
 
 
 names:
@@ -43,6 +44,9 @@ names:
 overarching theme:
   the mysterious creator is just trying to sell you various shit
   there are some saps floating around the website
+  story here is that fastcash is buying a lot of advertising - espescially on fake bullshit.
+    this means that fakebullshit is trying to get clicks to make fastcash ad revenue
+    fastcash is really the base of the ad ecosystem
 
 marketing
   Friend world: a place to meet friends
@@ -53,9 +57,18 @@ marketing
 other quirks:
   cursing on public posts can get you banned for life after some warnings
   cursing in chats are bleeped out
+  random things will get flagged as curses/nudity; temporary ban
+    "You're accaount has been deactivated.<a>view our guidlines</a>. if you think there has been a mistake, please contact a moderator"
+
+bot behavior/culture
+  - call each other by shortened versions of their screen names
+  - they clearly lie/exagerate about their personal lives; stories are inconsistent from thread to thread: "I have a great life because a, b, c"; "I have a great live because A B D"
+  - some profiles are private; and you can't see their messages - it creates a hole in the dialog until you're friends with them
+  - default: bot's are scheduled to check posts at certain time, and just give an automatic response to whatever was posted last. They check certain groups at certain times. mods maybe check every 5 minutes, so you always get a fresh response.
+  - some instances where bots clearly have multiple accounts to support their arguments. all some accounts do is agree with other single accounts
 
 quests:
-  - start with access to random
+  - start with access to general
     - ads are mostly for identitymanagementrecoverysystems
     - you want to get invited to next some other group
     - as part of the progress, someone asks you to find out all you can about some joe schmo
@@ -67,10 +80,21 @@ quests:
     - you get something if you post the special text from the fastcash wallet
 
 profile
+  * based on what they fill out, they get access to a group
   link to profile pic
-  self-description
-  gender, age
+  bio
+  gender
+  age
   list of posts
+  occupation
+  hobbies & interests
+  favorite websites
+  favorite books
+  favorite movies
+  favorite tv shows
+  favorite video games
+  religious views
+  political views
 
 
 sections
@@ -82,11 +106,13 @@ sections
     - some comments use ok emojis to indicate crypto facism - "you know that means anal sex, right?"
     - one racist/socialist asshole who won't shut up about UBI
     - back and forth on the semantics of whether suspected terrorist has rights, or some free speach thing. basically, a grand-scheme-of-things-semantics argument vs a knee jerk gut reaction argument
+    - "listen fake news fan..."; "what are you talking about? You're literally posting an article from a website calle fakebullshit.news!"; "It's a little something called *irony*"
   finance
     - a lot of people talking about fastcash
     - a discussion about whether NOT is a security, or if the creator is perpetuating securities fraud
-  random
+  general
     - the numbers game "post the next number: 1"
+    - "what are you doing now?" thread
   sports
     - queer deathmatch promotion - a lot of the wrestlers are fucking/jealous/etc.
     - they have their own meaning for the ok sign
@@ -98,14 +124,29 @@ sections
 
 
 gameplay
-  - you start off with access to random
+  - you start off with access to general
   - there's some other group you want to get access to, but it's invite only
   - you need to talk to people to get invited to other groups
   - if people don't like you, they won't give you any information
   - you need to figure out what they want to talk about, and give them the right answers
-    - ex: start off with access to random; message someone; ask if they know the admin to politics; they don't but some other guy might; you ask that other guy, and need to get on his good side; he tells you to talk to someone else "and let me know what he says"; you talk to the other guy, but they don't like you. you go back a step, and they tell you someone else
+    - ex: start off with access to general; message someone; ask if they know the admin to politics; they don't but some other guy might; you ask that other guy, and need to get on his good side; he tells you to talk to someone else "and let me know what he says"; you talk to the other guy, but they don't like you. you go back a step, and they tell you someone else
   - sometimes you need a certain number of likes to get something
   - you get more likes depending on whether you post stuff the group likes, and whether you've talked to people and they like you
+
+  = for most bots it makes sense to only have a limted number of things they can do, even in the groups. a lot of the conversations are clearly the bots talking to each other, but they make unique conversation
+
+  = there needs to be a distribution of how much time i put into the bots
+    - 1 bot with incredibly deep dialog possabilities (admin?)
+    - 5 or 6 with a reasonably large amount of depth. pretty much one
+    - 10 or 20 that are pretty flat, but coherent responses. like side characters in shenmue
+    - 30 or 50 that just spit out markvov text
+
+  - every once in a while group members start a mutiny, and create another group
+
+  everyone is given "special referral link"
+  "Congratulations! You've been selected to participate in an exciting new social network as a beta user. This is very exclusive opportunity to meet vibrant, intelligent, and friendly people. Engage in collegial and unique discussion. "
+  "Be respectful of other users. if they don't respond right away, they will eventually"
+  "Be sure to follow the moderation policy. We have very strict enforcememt guidlines"
 
 chat tips/things to make obvious:
   - say hi
@@ -128,3 +169,4 @@ people will follow you if you message them
   if you're a man, no women daters will respond to you. if they do, it will be lackluster sometimes men will message you.
 
 posting in public forum
+

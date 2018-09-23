@@ -4,6 +4,7 @@ import { type ChatId, type Chats, createChatId as id } from 'types/Chat'
 import { createUserId as uid, type UserId } from 'types/User'
 import { type Dispatch, type GetState } from 'types/redux'
 import { createReducer } from 'utils/redux'
+// $FlowFixMe
 import { actions as botActions } from './bots'
 
 const defaultState: Chats = {

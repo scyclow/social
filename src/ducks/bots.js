@@ -15,11 +15,11 @@ const defaultState: BotsState = {}
 
 const UPDATE_BOT_STATE = 'bots/UPDATE_BOT_STATE'
 
-type UpdateBotStateAction = Action<{ id: ChatId, state: Object }>;
+type UpdateBotStateAction = Action<{ id: ChatId, state: mixed }>;
 // type MessageToBotAction = Action<{ }>;
 
 export const actions = {
-  updateBotState(id: ChatId, state: BotState<mixed>): UpdateBotStateAction {
+  updateBotState(id: ChatId, state: BotState<mixed>) {
     return {
       type: UPDATE_BOT_STATE,
       payload: { id, state }

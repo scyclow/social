@@ -1,0 +1,11 @@
+.container > * {
+  display: block;
+}
+
+.breadcrumbs > *::after {
+  content: ' > ';
+}
+
+.breadcrumbs > *:last-child::after {
+  content: '';
+}

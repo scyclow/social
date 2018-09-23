@@ -18,13 +18,13 @@ type Props = {
       messageDraft: string
     }
   },
-  newChatMessage: (string, string, string) => mixed,
   listMinimized: boolean,
-  minimizeChatList: () => mixed,
-  openChatBox: ChatId => mixed,
-  closeChatBox: ChatId => mixed,
-  minimizeChatBox: (ChatId, boolean) => mixed,
-  updateMessageDraft: (ChatId, string) => mixed
+  newChatMessage: typeof chatActions.newChatMessage,
+  minimizeChatList: typeof chatModuleActions.minimizeChatList,
+  openChatBox: typeof chatModuleActions.openChatBox,
+  closeChatBox: typeof chatModuleActions.closeChatBox,
+  minimizeChatBox: typeof chatModuleActions.minimizeChatBox,
+  updateMessageDraft: typeof chatModuleActions.updateMessageDraft
 };
 
 class Chat extends Component<Props, *> {

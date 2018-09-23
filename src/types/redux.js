@@ -26,8 +26,8 @@ export type Action<P> = {
 
 export type Actions =
   | ReduxInitAction
-  | Action<*>;
+  | Action<mixed>;
 
 export type Store = ReduxStore<State, Actions>;
 
-export type Dispatch = ReduxDispatch<Actions | (Dispatch, GetState) => Actions>;
+export type Dispatch = (Actions | (Dispatch, GetState) => mixed) => mixed;

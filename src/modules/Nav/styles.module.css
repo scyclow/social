@@ -26,3 +26,12 @@
 .link {
   text-decoration: none;
 }
+
+.link:first-child::before {
+  content: ''
+}
+
+.link::before {
+  content: '|';
+  padding: 0 10px;
+}
