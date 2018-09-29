@@ -3,6 +3,8 @@ import { type Chats } from 'types/Chat'
 import { type Users } from 'types/User'
 import { type ChatModuleState } from 'modules/Chat/duck'
 import { type BotsState } from 'ducks/bots'
+import { type Threads } from 'ducks/threads'
+import { type GroupsState } from 'ducks/groups'
 import { type SchedulerState } from 'ducks/scheduler'
 import type { Store as ReduxStore, Dispatch as ReduxDispatch } from 'redux';
 
@@ -10,11 +12,13 @@ export type ReduxInitAction = { type: '@@INIT' };
 
 export type State = {
   chats: Chats,
-  users: Users,
   chatModule: ChatModuleState,
-  scheduler: SchedulerState,
+  threads: Threads,
+  gorups: GroupsState,
+  users: Users,
   bots: BotsState,
-  router: any
+  scheduler: SchedulerState,
+  router: mixed
 };
 
 export type GetState = () => State;

@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import ChatList from './ChatList'
 import ChatBox from './ChatBox'
 import styles from './styles.module.css'
-import { type ChatId, type ChatPopulated, populateChat } from 'types/Chat'
+import { type ChatPopulated, populateChat } from 'types/Chat'
 import { connect } from 'react-redux';
 import { mapValues, filter, values } from 'lodash'
 import { actions as chatActions } from 'ducks/chats'

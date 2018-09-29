@@ -4,54 +4,65 @@ import * as React from 'react';
 import { Link, Route } from 'react-router-dom'
 import { connect } from 'react-redux';
 import styles from './styles.module.css';
+import { map } from 'lodash';
+import { type GroupsState } from 'ducks/groups';
+import Thread from 'modules/Threads'
 
 import Group from './Group'
 
 
 type Props = {
-  groups: Object
+  groups: GroupsState
 };
+
+const GroupsBody = ({ groups }: Props) => (
+  <div className={styles.body}>
+    {map(groups, group => (
+      <Link key={group.id} to={`/groups/${group.id}`}>{group.name}</Link>
+    ))}
+  </div>
+)
 
 class Groups extends React.Component<Props> {
   render() {
-    // should turn links into breadcrums
+    // should turn links into breadcrumbs
+    const { groups } = this.props
     return (
-      <div className={styles.container}>
+      <div>
         <div className={styles.breadcrumbs}>
           <Link to="/groups">Groups</Link>
+
           <Route path="/groups/:id" render={({ match: { params: { id } } }) =>
-            <Link to={`/groups/${id || ''}`}>{this.props.groups[id].name}</Link>
+            <Link to={`/groups/${id || ''}`}>{groups[id || ''].name}</Link>
           }/>
-          <Route path="/groups/:groupId/posts/:postId" render={({ match: { params: { groupId, postId } } }) =>
-            (!!groupId && !!postId &&
-              <Link to={`/groups/${groupId}/posts/${postId}`}>
-                {`post ${postId}`}
+
+          <Route path="/groups/:groupId/threads/:threadId" render={({ match: { params: { groupId, threadId } } }) =>
+            (!!groupId && !!threadId &&
+              <Link to={`/groups/${groupId}/threads/${threadId}`}>
+                {`thread ${threadId}`}
               </Link>
             )
           }/>
         </div>
 
-        <Link to="/groups/general">general</Link>
-        <Link to="/groups/finance">Finance</Link>
-        <Link to="/groups/politics">Politics</Link>
-        <Link to="/groups/spirituality">Religion & Spirituality</Link>
-        <Link to="/groups/dating">Dating</Link>
-        <Link to="/groups/sports">Sports</Link>
-        <Route exact path="/groups/:groupId" render={({ match }) => <Group id={match.params.groupId || ''} />}/>
+        <section className={styles.container}>
+          <Route exact path="/groups" render={() =>
+            <GroupsBody {...this.props} />
+          } />
 
+          <Route exact path="/groups/:groupId" render={({ match }) =>
+            <Group id={match.params.groupId || ''} />
+          } />
+
+          <Route exact path="/groups/:groupId/threads/:threadId" render={({ match }) =>
+            <Thread id={match.params.threadId || ''} />
+          } />
+        </section>
       </div>
     )
   }
 }
 
 export default connect(state => ({
-    groups: {
-      general: { name: 'general' },
-      finance: { name: 'finance' },
-      politics: { name: 'politics' },
-      spirituality: { name: 'spirituality&romance' },
-      dating: { name: 'dating' },
-      sports: { name: 'sports' },
-    }
-  })
-)(Groups)
+  groups: state.groups
+}))(Groups)

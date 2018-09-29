@@ -1,5 +1,9 @@
-.container > * {
+.body > * {
   display: block;
+}
+
+.container {
+  margin-top: 20px;
 }
 
 .breadcrumbs > *::after {

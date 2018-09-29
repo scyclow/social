@@ -624,7 +624,7 @@ declare module "lodash" {
     map<T, U>(
       array: ?$ReadOnlyArray<T>,
       iteratee?: ReadOnlyMapIterator<T, U>
-    ): Array<U>,
+    ): Array<U>;
     map<V, T: Object, U>(
       object: ?T,
       iteratee?: OMapIterator<V, T, U>

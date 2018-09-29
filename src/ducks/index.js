@@ -7,6 +7,8 @@ import { connectRouter, routerMiddleware } from 'connected-react-router'
 import { type Store } from 'types/redux'
 import { reducer as chats } from './chats'
 import { reducer as users } from './users'
+import { reducer as threads } from './threads'
+import { reducer as groups } from './groups'
 // $FlowFixMe
 import { reducer as bots } from './bots'
 import { reducer as scheduler } from './scheduler'
@@ -37,6 +39,8 @@ const rootReducer = withHistory(
     users,
     chats,
     bots,
+    threads,
+    groups,
     scheduler,
     chatModule
   })

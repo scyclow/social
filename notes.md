@@ -66,6 +66,9 @@ bot behavior/culture
   - some profiles are private; and you can't see their messages - it creates a hole in the dialog until you're friends with them
   - default: bot's are scheduled to check posts at certain time, and just give an automatic response to whatever was posted last. They check certain groups at certain times. mods maybe check every 5 minutes, so you always get a fresh response.
   - some instances where bots clearly have multiple accounts to support their arguments. all some accounts do is agree with other single accounts
+  -"are you jewish?"
+    "yes"
+      accusation about controlling the media, or try to sell some religious shit
 
 quests:
   - start with access to general
@@ -170,3 +173,22 @@ people will follow you if you message them
 
 posting in public forum
 
+posts
+  - "Trump is kicking ass and taking names"
+    a: what do you libtards think about that?
+    b: <deleted>
+    a: you would say that!
+    c: <deleted>
+    d: <deleted>
+- general
+  - "stop wasting your time"
+    a: "how much time do you think you spend on the internet every day? how much do you spend in a week? a month? a year? now, how much of that time would you say was *meaningful*? i'm talking about time spent in a way that you'll look back in 10 years with no regrets. maybe you learned something from a wikipedia rabit hole. maybe you engaged in a thoughtful discussion. maybe you experienced some memorable art. people find meaning in all sorts of things, and whatever does it for you is fine. now, how much of that time spent would you consider *wasted*? mindlessly clicking around? browsing back and forth between the same four websites..."
+    b: "shut up, a"
+    c: "yeah, shut up a. stop being such a killjoy"
+    d: "i hear that. we're living in an age of spiritual bankruptcy. "
+
+  - "I'm boooord"
+    a: "I'm bored. send me a DM. We can talk about the weather, sports, whatever"
+
+  - "help"
+    basically, an old peron trying to escape form a retirement home. when you chat them, it leads to a mini text adventure of you telling the, what to do to ge tout

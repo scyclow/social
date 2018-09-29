@@ -10,7 +10,6 @@ import Chat from 'modules/Chat'
 import Nav from 'modules/Nav'
 import Body from 'modules/Body'
 import Groups from 'modules/Groups'
-import Group from 'modules/Groups/Group'
 
 type Props = {
   handleOutstandingJobs: typeof schedulerActions.handleOutstandingJobs
@@ -27,9 +26,15 @@ class App extends Component<Props> {
         <Nav />
         <Body>
           <Switch>
-            <Route exact path="/" render={() => <div>this is the root</div>}/>
+            <Route exact path="/">
+              <div>this is the root</div>
+            </Route>
+
+            <Route path="/profile">
+              <div>this is the profile</div>
+            </Route>
+
             <Route path="/groups" component={Groups} />
-            <Route path="/profile" render={() => <div>this is the profile</div>}/>
           </Switch>
 
         </Body>

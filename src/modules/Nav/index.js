@@ -9,7 +9,7 @@ type Props = {};
 class Nav extends Component<Props> {
   render() {
     return (
-      <div className={styles.spaceHolder}>
+      <nav className={styles.spaceHolder}>
         <div className={styles.container}>
           <Link to="/">
             <div className={styles.title}>friendworld.social</div>
@@ -19,7 +19,7 @@ class Nav extends Component<Props> {
             <Link to="/profile" className={styles.link}>Profile</Link>
           </div>
         </div>
-      </div>
+      </nav>
     )
   }
 }

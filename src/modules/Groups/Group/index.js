@@ -1,39 +1,40 @@
 // @flow
 
 import * as React from 'react';
+import { Link } from 'react-router-dom'
+import { connect } from 'react-redux';
+import { selectors as threadSelectors } from 'ducks/threads'
+import { map } from 'lodash'
+
 import styles from './styles.module.css';
 
-type Props = {
-  id: string
-};
+type Props = any;//{
+  // id: string
+//};
 
-// TODO connect group to duck that looks up group id and gets group
-// add some redux store normalzer thing where, for an object witht he structure:
-  // {
-  //   something
-  //   somethingElse: {
-  //     id
-  //   }
-  // }
-// it creates a proxy thing that allows you to get properties like such:
-  // {
-  //   something
-  //   somethingElse: {
-  //     id
-      // more stuff
-      // andAnotherThing
-  //   }
-  // }
+const ThreadPost = ({ thread, groupId }) => (
+  <div>
+    <Link to={`/groups/${groupId}/threads/${thread.id}`}>
+      {thread.posts[0].title}
+    </Link>
+  </div>
+)
 
 class Group extends React.Component<Props> {
   render() {
+    const { group, threads } = this.props
     return (
       <div className={styles.container}>
-        Hello! Welcome to the {this.props.id} page!
-        {JSON.stringify(this.props)}
+        <h2>{group.name}</h2>
+        {map(threads, thread =>
+          <ThreadPost key={thread.id} thread={thread} groupId={group.id} />
+        )}
       </div>
     )
   }
 }
 
-export default Group
+export default connect((state, ownProps) => ({
+  threads: threadSelectors.getThreadsForGroup(state, ownProps.id),
+  group: state.groups[ownProps.id]
+}))(Group)
