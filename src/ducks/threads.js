@@ -39,6 +39,13 @@ const defaultState: Threads = {
       time: Date.now(),
       title: 'How much time have you wasted?',
       content: `how much time do you think you spend on the internet every day? how much do you spend in a week? a month? a year? now, how much of that time would you say was *meaningful*? i'm talking about time spent in a way that you'll look back in 10 years with no regrets. maybe you learned something from a wikipedia rabit hole. maybe you engaged in a thoughtful discussion. maybe you experienced some memorable art. people find meaning in all sorts of things, and whatever does it for you is fine. now, how much of that time spent would you consider *wasted*? mindlessly clicking around? browsing back and forth between the same four websites...`
+    }, {
+      authorId: 'bot1',
+      points: 5,
+      // isOp: true,
+      time: Date.now(),
+      title: 'Re: How much time have you wasted?',
+      content: `Shut up steve. stop being such a fucking killjoy.`
     }]
   },
   '2': {

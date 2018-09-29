@@ -6,6 +6,14 @@
   margin-top: 20px;
 }
 
+.breadcrumbs > * {
+  margin-right: 5px;
+  text-decoration: none;
+}
+.breadcrumbs > *:hover {
+  text-decoration: underline;
+}
+
 .breadcrumbs > *::after {
   content: ' > ';
 }

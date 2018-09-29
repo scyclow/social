@@ -5,6 +5,11 @@ import { createReducer } from 'utils/redux'
 import { type Action } from 'types/redux'
 
 const defaultState: Users = {
+  user0: {
+    id: 'user0',
+    name: 'steve',
+    onlineNow: true
+  },
   [id('bot1').toString()]: {
     id: id('bot1'),
     name: 'steve',
