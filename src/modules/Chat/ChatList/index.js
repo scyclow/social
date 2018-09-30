@@ -4,10 +4,13 @@ import React, { Component } from 'react';
 import cx from 'utils/cx'
 import styles from './styles.module.css'
 
-import { type ChatPopulated, type ChatId } from '../types/Chat'
+import { type ChatId, type Chat } from 'ducks/chats'
+import { type Users } from 'ducks/users'
+
 
 type ChatListProps = {
-  availableChats: Array<ChatPopulated>,
+  users: Users,
+  availableChats: Array<Chat>,
   onSelectChat: ChatId => mixed,
   minimized: boolean,
   onMinimize: () => mixed
@@ -20,7 +23,7 @@ const ChatListHeader = ({ onMinimize, availableChats, minimized }) => (
   </div>
 )
 
-const ChatListContent = ({ minimized, availableChats, onSelectChat }) => {
+const ChatListContent = ({ minimized, availableChats, onSelectChat, users }) => {
   return (
     <div className={cx(styles.list, minimized && styles.minimized)}>
       <div className={styles.content}>
@@ -28,8 +31,8 @@ const ChatListContent = ({ minimized, availableChats, onSelectChat }) => {
           <ChatListItem
             key={chat.id}
             chatId={chat.id}
-            name={chat.bot.name}
-            onlineNow={chat.bot.onlineNow}
+            name={users[chat.botId].name}
+            onlineNow={users[chat.botId].onlineNow}
             onSelect={onSelectChat}
           />
         ))}
@@ -47,7 +50,7 @@ const ChatListItem = ({ chatId, name, onlineNow, onSelect }) => (
 
 export default class ChatList extends Component<ChatListProps, *> {
   render() {
-    const { minimized, availableChats, onSelectChat, onMinimize } = this.props
+    const { minimized, availableChats, onSelectChat, onMinimize, users } = this.props
 
     return (
       <div className={styles.container}>
@@ -60,6 +63,7 @@ export default class ChatList extends Component<ChatListProps, *> {
           minimized={minimized}
           availableChats={availableChats}
           onSelectChat={onSelectChat}
+          users={users}
         />
       </div>
     )

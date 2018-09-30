@@ -1,7 +1,7 @@
 // @flow
 
-import { type Action } from 'types/redux'
-import { type ChatId } from 'types/Chat'
+import { type Action } from 'ducks'
+import { type ChatId } from 'ducks/chats'
 import { createReducer } from 'utils/redux'
 
 export type ChatModuleState = {

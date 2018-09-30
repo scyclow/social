@@ -1,6 +1,6 @@
 // @flow
 
-import type { Action } from 'types/redux';
+import type { Action } from 'ducks';
 
 type Reducer<S> = (state: S, action: Action<*>) => S;
 

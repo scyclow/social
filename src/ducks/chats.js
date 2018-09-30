@@ -1,17 +1,39 @@
 // @flow
 
-import { type ChatId, type Chats, createChatId as id } from 'types/Chat'
-import { createUserId as uid, type UserId } from 'types/User'
-import { type Dispatch, type GetState } from 'types/redux'
+import { type Dispatch, type GetState } from 'ducks'
 import { createReducer } from 'utils/redux'
 // $FlowFixMe
 import { actions as botActions } from './bots'
 
+import { type UserId } from './users'
+
+// fuck it
+// export opaque type ChatId: string = string;
+export type ChatId = string;
+
+export type ChatMessage = {
+  sender: UserId,
+  time: number,
+  message: string
+};
+
+export type Chat = {
+  id: ChatId,
+  botId: UserId,
+  history: Array<ChatMessage>
+};
+
+export type Chats = {
+  [ChatId]: Chat
+};
+
+
+
 const defaultState: Chats = {
-  [id('chat1').toString()]: {
-    id: id('chat1'),
+  chat1: {
+    id: 'chat1',
     history: [],
-    botId: uid('bot1')
+    botId: 'bot1'
   },
   // [id('chat2').toString()]: {
   //   id: id('chat2'),

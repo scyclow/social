@@ -4,14 +4,15 @@ import React, { Component } from 'react';
 import ChatList from './ChatList'
 import ChatBox from './ChatBox'
 import styles from './styles.module.css'
-import { type ChatPopulated, populateChat } from 'types/Chat'
 import { connect } from 'react-redux';
-import { mapValues, filter, values } from 'lodash'
-import { actions as chatActions } from 'ducks/chats'
+import { filter, values } from 'lodash'
+import { actions as chatActions, type Chats } from 'ducks/chats'
+import { type Users } from 'ducks/users'
 import { actions as chatModuleActions } from './duck'
 
 type Props = {
-  chats: { [id: string]: ChatPopulated },
+  users: Users,
+  chats: Chats,
   chatStates: {
     [id: string]: {
       windowState: 'open' | 'minimized' | 'closed',
@@ -30,6 +31,7 @@ type Props = {
 class Chat extends Component<Props, *> {
   render() {
     const {
+      users,
       chats,
       chatStates,
       listMinimized,
@@ -52,6 +54,7 @@ class Chat extends Component<Props, *> {
             minimized={chatStates[chat.id].windowState === 'minimized'}
             messageDraft={chatStates[chat.id].messageDraft}
             chat={chat}
+            user={users[chat.botId]}
             sendMessage={msg => newChatMessage('user0', chat.id, msg)}
             updateMessageDraft={updateMessageDraft}
           />
@@ -61,6 +64,7 @@ class Chat extends Component<Props, *> {
           onMinimize={minimizeChatList}
           minimized={listMinimized}
           availableChats={values(chats)}
+          users={users}
         />
       </div>
     )
@@ -69,7 +73,8 @@ class Chat extends Component<Props, *> {
 
 export default connect(
   state => ({
-    chats: mapValues(state.chats, chat => populateChat(chat, state.users)),
+    users: state.users,
+    chats: state.chats,
     chatStates: state.chatModule.chats,
     listMinimized: state.chatModule.listMinimized,
   }),

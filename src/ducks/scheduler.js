@@ -2,7 +2,7 @@
 
 import { omit } from 'lodash'
 import { createReducer } from 'utils/redux'
-import { type Action, type Dispatch, type GetState } from 'types/redux'
+import { type Action, type Dispatch, type GetState } from 'ducks'
 
 
 type Job = {

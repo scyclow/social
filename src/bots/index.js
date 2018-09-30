@@ -1,7 +1,7 @@
 // @flow
 
 import bot1 from './bot1'
-import { type Dispatch, type GetState } from 'types/redux'
+import { type Dispatch, type GetState } from 'ducks'
 
 const botMap = {
   bot1

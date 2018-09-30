@@ -1,12 +1,14 @@
 // @flow
 import React, { Component } from 'react';
 import styles from './styles.module.css'
-import { type ChatPopulated } from 'types/Chat'
+import { type Chat } from 'ducks/chats'
+import { type User } from 'ducks/users'
 
 type ChatBoxProps = {
   onClose: () => mixed,
   sendMessage: (string) => mixed,
-  chat: ChatPopulated,
+  chat: Chat,
+  user: User,
   messageDraft: string,
   minimized: boolean,
   onMinimize: boolean => mixed,
@@ -77,6 +79,7 @@ export default class ChatBox extends Component<ChatBoxProps> {
 
   render() {
     const {
+      user,
       chat,
       minimized,
       onClose,
@@ -88,7 +91,7 @@ export default class ChatBox extends Component<ChatBoxProps> {
     return (
       <div className={styles.container}>
         <ChatBoxHeader
-          name={chat.bot.name}
+          name={user.name}
           onClose={onClose}
           onMinimize={() => onMinimize(!minimized)}
         />

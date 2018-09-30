@@ -1,18 +1,52 @@
 // @flow
 
-import { createStore, combineReducers, compose, applyMiddleware } from 'redux'
+import {
+  createStore,
+  combineReducers,
+  compose,
+  applyMiddleware,
+  type Store as ReduxStore
+} from 'redux'
 import thunk from 'redux-thunk'
 import { createBrowserHistory } from 'history'
 import { connectRouter, routerMiddleware } from 'connected-react-router'
-import { type Store } from 'types/redux'
-import { reducer as chats } from './chats'
-import { reducer as users } from './users'
-import { reducer as threads } from './threads'
-import { reducer as groups } from './groups'
+import { reducer as chats, type Chats } from './chats'
+import { reducer as users, type Users } from './users'
+import { reducer as threads, type Threads } from './threads'
+import { reducer as groups, type GroupsState } from './groups'
+import { reducer as scheduler, type SchedulerState } from './scheduler'
+import { reducer as chatModule, type ChatModuleState } from 'modules/Chat/duck'
 // $FlowFixMe
-import { reducer as bots } from './bots'
-import { reducer as scheduler } from './scheduler'
-import { reducer as chatModule } from 'modules/Chat/duck'
+import { reducer as bots, type BotsState } from './bots'
+
+export type ReduxInitAction = { type: '@@INIT' };
+
+export type State = {
+  chats: Chats,
+  chatModule: ChatModuleState,
+  threads: Threads,
+  gorups: GroupsState,
+  users: Users,
+  bots: BotsState,
+  scheduler: SchedulerState,
+  router: mixed
+};
+
+export type GetState = () => State;
+
+export type Action<P> = {
+  type: string,
+  payload: P
+};
+
+export type Actions =
+  | ReduxInitAction
+  | Action<mixed>;
+
+export type Store = ReduxStore<State, Actions>;
+
+export type Dispatch = (Actions | (Dispatch, GetState) => mixed) => mixed;
+
 
 const REDUX_STATE = '__REDUX_STATE___'
 

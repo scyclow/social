@@ -1,8 +1,19 @@
 // @flow
 
-import { type UserId, type Users, createUserId as id } from 'types/User'
 import { createReducer } from 'utils/redux'
-import { type Action } from 'types/redux'
+import { type Action } from 'ducks'
+
+export type UserId = string;
+
+export type User = {
+  id: UserId,
+  name: string,
+  onlineNow: boolean
+};
+
+export type Users = {
+  [UserId]: User
+};
 
 const defaultState: Users = {
   user0: {
@@ -10,28 +21,28 @@ const defaultState: Users = {
     name: 'steve',
     onlineNow: true
   },
-  [id('bot1').toString()]: {
-    id: id('bot1'),
+  bot1: {
+    id: 'bot1',
     name: 'steve',
     onlineNow: true
   },
-  [id('bot2').toString()]: {
-    id: id('bot2'),
+  bot2: {
+    id: 'bot2',
     name: 'tom',
     onlineNow: false
   },
-  [id('bot3').toString()]: {
-    id: id('bot3'),
+  bot3: {
+    id: 'bot3',
     name: 'max',
     onlineNow: false
   },
-  [id('bot4').toString()]: {
-    id: id('bot4'),
+  bot4: {
+    id: 'bot4',
     name: 'peter',
     onlineNow: true
   },
-  [id('bot5').toString()]: {
-    id: id('bot5'),
+  bot5: {
+    id: 'bot5',
     name: 'bil',
     onlineNow: true
   },

@@ -1,7 +1,7 @@
 // @flow
 
 import { createReducer } from 'utils/redux'
-import { type Action, type State } from 'types/redux'
+import { type Action, type State } from 'ducks'
 import uuid from 'uuid/v4';
 import u from 'updeep'
 import { filter } from 'lodash'

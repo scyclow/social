@@ -3,8 +3,8 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { type Thread as ThreadType, type Post as PostType } from 'ducks/threads'
-import { type User } from 'types/User';
-import { type State } from 'types/redux'
+import { type User } from 'ducks/users';
+import { type State } from 'ducks'
 
 import styles from './styles.module.css';
 
@@ -14,8 +14,8 @@ type PostProps = PostOwnProps & { user: User };
 
 const Post = connect((state: State, ownProps: PostOwnProps) => ({
   user: state.users[ownProps.post.authorId]
-}))
-(({ post, user }: PostProps) => (
+})
+)(({ post, user }: PostProps) => (
   <div className={styles.post}>
     <div className={styles.postHeader}>
       {post.title}
@@ -53,7 +53,8 @@ class Thread extends React.Component<Props> {
           {thread.posts.map((post, ix) => <Post post={post} key={ix} />)}
         </div>
         <div>
-          <textarea></textarea>
+          <textarea className={styles.contentInput} placeholder="Add a comment" />
+          <button className={styles.submitButton}>submit post</button>
         </div>
       </div>
     )

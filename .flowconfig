@@ -13,5 +13,6 @@ module.name_mapper='ducks' -> '<PROJECT_ROOT>/src/ducks'
 module.name_mapper='utils' -> '<PROJECT_ROOT>/src/utils'
 module.name_mapper='bots' -> '<PROJECT_ROOT>/src/bots'
 module.name_mapper='modules' -> '<PROJECT_ROOT>/src/modules'
+module.name_mapper='components' -> '<PROJECT_ROOT>/src/components'
 
 [strict]
