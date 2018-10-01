@@ -2,7 +2,8 @@
 
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { type Thread as ThreadType, type Post as PostType } from 'ducks/threads'
+import { last } from 'lodash'
+import { type Thread as ThreadType, type Post as PostType, actions as threadActions } from 'ducks/threads'
 import { type User } from 'ducks/users';
 import { type State } from 'ducks'
 
@@ -38,14 +39,19 @@ type OwnProps = {
 };
 
 type ReduxProps = {
-  thread: ThreadType
+  thread: ThreadType,
+  newPost: typeof threadActions.newPost
 };
 
 type Props = OwnProps & ReduxProps;
 
 class Thread extends React.Component<Props> {
+  state = {
+    content: ''
+  }
+
   render() {
-    const { thread } = this.props
+    const { thread, newPost } = this.props
     return (
       <div>
         <h2 className={styles.threadTitle}>{thread.posts[0].title}</h2>
@@ -53,8 +59,26 @@ class Thread extends React.Component<Props> {
           {thread.posts.map((post, ix) => <Post post={post} key={ix} />)}
         </div>
         <div>
-          <textarea className={styles.contentInput} placeholder="Add a comment" />
-          <button className={styles.submitButton}>submit post</button>
+          <textarea
+            className={styles.contentInput}
+            placeholder="Add a comment"
+            onChange={e => this.setState({ content: e.target.value })}
+            value={this.state.content}
+          />
+          <button
+            className={styles.submitButton}
+            onClick={() => {
+              newPost({
+                authorId: 'user0',
+                title: 'Re: ' + last(thread.posts).title,
+                content: this.state.content,
+                threadId: thread.id
+              })
+              this.setState({ content: '' })
+            }}
+          >
+            submit post
+          </button>
         </div>
       </div>
     )
@@ -63,4 +87,6 @@ class Thread extends React.Component<Props> {
 
 export default connect((state: State, ownProps: OwnProps): ReduxProps => ({
   thread: state.threads[ownProps.id]
-}))(Thread)
+}), {
+  newPost: threadActions.newPost
+})(Thread)
