@@ -12,17 +12,24 @@ const externalLinkTest = /^(http|https):\/\/.+\..+/
 const userTest = /^@.+/
 const groupTest =/^\+.+/
 
+const cleanFragment = (fragment: string, test: RegExp) => replace(
+  replace(fragment, test, ''),
+  /(\.$)|(\?$)|(!$)/,
+  ''
+)
+
 
 const parseFragment = (fragment: string) => {
   if (fragment.match(externalLinkTest)) {
     return <a href={fragment} target="_blank">{fragment}</a>
 
   } else if (fragment.match(userTest)) {
-    const userId = replace(fragment, /((^@)|(\.$)|(\?$))/, '')
+    const userId = cleanFragment(fragment, /^@/)
     return <Link to={`/users/${userId}`}>{fragment}</Link>
 
   } else if (fragment.match(groupTest)) {
-    const [groupId, threadId] = replace(fragment, /((^\+)|(\.$)|(\?$))/, '').split('/')
+    const [groupId, threadId] = cleanFragment(fragment, /^\+/).split('/')
+    console.log(groupId)
     const route = threadId
       ? `/groups/${groupId}/threads/${threadId}`
       : `/groups/${groupId}`
