@@ -2,38 +2,6 @@
   margin-bottom: 15px;
 }
 
-.post {
-  border: 1px solid;
-}
-
-.postHeader {
-  border-bottom: 1px solid;
-  font-size: 12px;
-  padding: 0.5em;
-}
-
-.postMain {
-  display: flex;
-}
-
-.postPanel {
-  padding: 10px;
-  border-right: 1px solid;
-}
-
-.postContent {
-  padding: 10px;
-  line-height: 1.4;
-}
-
-.avatar {
-  border: 1px solid;
-  border-radius: 3px;
-  height: 45px;
-  width: 45px;
-  margin-bottom: 5px;
-}
-
 .contentInput {
   margin-top: 10px;
   width: 100%;

@@ -72,7 +72,7 @@ const defaultState: Threads = {
         time: Date.now(),
         points: 1,
         title: 'Report on FCMP',
-        content: 'of course fakebullshit.news is reputable. even finance is talking about it'
+        content: 'of course http://fakebullshit.news is reputable. even finance is talking about it'
       }
     ]
   }

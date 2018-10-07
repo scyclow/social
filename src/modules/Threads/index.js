@@ -3,35 +3,11 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { last } from 'lodash'
-import { type Thread as ThreadType, type Post as PostType, actions as threadActions } from 'ducks/threads'
-import { type User } from 'ducks/users';
+import { type Thread as ThreadType, actions as threadActions } from 'ducks/threads'
 import { type State } from 'ducks'
+import Post from './Post'
 
 import styles from './styles.module.css';
-
-
-type PostOwnProps = { post: PostType };
-type PostProps = PostOwnProps & { user: User };
-
-const Post = connect((state: State, ownProps: PostOwnProps) => ({
-  user: state.users[ownProps.post.authorId]
-})
-)(({ post, user }: PostProps) => (
-  <div className={styles.post}>
-    <div className={styles.postHeader}>
-      {post.title}
-    </div>
-    <div className={styles.postMain}>
-      <div className={styles.postPanel}>
-        <div className={styles.avatar} />
-        {user.name}
-      </div>
-      <p className={styles.postContent}>
-        {post.content}
-      </p>
-    </div>
-  </div>
-))
 
 
 type OwnProps = {
