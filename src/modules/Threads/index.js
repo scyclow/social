@@ -45,7 +45,11 @@ type ReduxProps = {
 
 type Props = OwnProps & ReduxProps;
 
-class Thread extends React.Component<Props> {
+type ComponentState = {
+  content: string
+};
+
+class Thread extends React.Component<Props, ComponentState> {
   state = {
     content: ''
   }
@@ -85,7 +89,7 @@ class Thread extends React.Component<Props> {
   }
 }
 
-export default connect((state: State, ownProps: OwnProps): ReduxProps => ({
+export default connect((state: State, ownProps: OwnProps) => ({
   thread: state.threads[ownProps.id]
 }), {
   newPost: threadActions.newPost

@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import styles from './styles.module.css'
 import { type Chat } from 'ducks/chats'
 import { type User } from 'ducks/users'
+import ParsedText from 'components/ParsedText'
 
 type ChatBoxProps = {
   onClose: () => mixed,
@@ -26,7 +27,9 @@ const ChatBoxContent = ({ history }) => (
   <div className={styles.content}>
     {history.map((item, i) => (
       <div key={i}>
-        <div className={styles.message}><strong>{item.sender}:</strong> {item.message}</div>
+        <div className={styles.message}>
+          <strong>{item.sender}:</strong> <ParsedText content={item.message} />
+        </div>
       </div>
     ))}
   </div>

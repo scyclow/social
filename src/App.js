@@ -27,7 +27,10 @@ class App extends Component<Props> {
         <Body>
           <Switch>
             <Route exact path="/">
-              <div>this is the root</div>
+              <div>
+                <div>Welcome to friendworld.social! I remember a time when the world wide web was a magical place, full of discover and authentic conversation. Back then, the internet pulled people together instead fo tearing them apart.</div>
+                <div>If you're here, that means you've been invited to participate in the exclusive friendworld.social beta community pilot. </div>
+              </div>
             </Route>
 
             <Route path="/profile">

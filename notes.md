@@ -17,6 +17,7 @@ it also appears that there are several overlapping factions of people, correspon
   - "I'm just trying to sell shit" (market place)
   - bot hunters
   - wrestlers building up a match
+  - end herpes
 
 there are also many individual characters:
   - dream journal
@@ -32,8 +33,10 @@ and depending on the info you give up, you see targetted ads:
   - penis pills/weight loss
   - camwhore
   - hotsauce
+  - generic repeating video mashup of tinnitus/skin sagging/etc
   - t shirts that you can actually buy
-  - web development services circa 1997 (j geoff, heaven's gate)
+  - 0ms.co
+    - web development and hosting services circa 1997 (j geoff, heaven's gate)
 
 
 names:
@@ -71,6 +74,11 @@ bot behavior/culture
       accusation about controlling the media, or try to sell some religious shit
 
 quests:
+  - main quest involves piecing together a technicratic conspiracy theory where jews control the media + the financial system. fastcashmoneyplus.biz and fakebullshit.news way to achieve freedom. dating websites are designed to manipulate your sexual desires. there's some Q-like ringleader, anonymously dipersing information
+
+  - videos, sales text, etc mention specific people
+    - look up name in identitylookupmanagementsystem
+
   - start with access to general
     - ads are mostly for identitymanagementrecoverysystems
     - you want to get invited to next some other group
@@ -117,6 +125,8 @@ sections
     - the numbers game "post the next number: 1"
     - "what are you doing now?" thread
   sports
+    - starts with a wholesome thread about sports and an old man's opinion on why the brooklyn dodgers are the greatest sports team of all time.
+    - someone posting about the montreal screwjob, its context in wrestling history. asks if it's a work? someone replies that it's all fake bullshit. reply that owen hart's death was a conspiracy perpetrated by Vince mcmahon
     - queer deathmatch promotion - a lot of the wrestlers are fucking/jealous/etc.
     - they have their own meaning for the ok sign
     - revolves around a g1-esq deathmatch tournament over 7 days
@@ -171,9 +181,19 @@ people will follow you if you message them
   if you're a woman and post in dating, you'll get a lot of fuckbois messaging you. some will be malicious if you reject them or don't respond.
   if you're a man, no women daters will respond to you. if they do, it will be lackluster sometimes men will message you.
 
-posting in public forum
 
 posts
+- sports
+  - single post by old guy: "what's your favorit sports team?"
+  old guy: "I remember back in 2001 the NJ Nets had a great run! ..."
+    - no responses
+    - i user responds, then "Ah yes, the <sports team>, they had a great season back in 2012 ;)"
+- dating & romance
+  - "I'm giving up"
+    a: "I'm giving up dating. I can't do it any more. I'm 27 years old, and I've never had a girlfriend. I must have been on close to 200 first dates at this point, and it's been a constant stream of failure, rejection, and shame. I don't know why it hasn't worked out for me. I have a job, and hobbies, and social skills. I'm not the most good looking guy in the world, but in far from hideous. I respect women. But nothing seems to be working. The constant treadmill of dating is making me nauseous. I can't bring myself to go on certain dates because they remind me of other failures. I used to get excited whenever I came across a pretty girl. Now I just get depressed because I know she's out of my league and will never want to date me. I feel like the only respectable thing to do at this point is to give up. "
+    b: "y'all need to man up"
+    c: "yeah, stop being such a f*cking downer"
+- politics
   - "Trump is kicking ass and taking names"
     a: what do you libtards think about that?
     b: <deleted>
@@ -192,3 +212,44 @@ posts
 
   - "help"
     basically, an old peron trying to escape form a retirement home. when you chat them, it leads to a mini text adventure of you telling the, what to do to ge tout
+
+  - "The collapse of civilization is imminent"
+
+
+memes
+  popular 1950s names
+  #sacredhumans
+  #sleepnomore
+  #bedwetters (because they're asleep)
+
+  #primalman
+
+
+video
+  https://www.youtube.com/embed/dzl5NFkqmII
+    [0:01:37] - corrupt corporate machine
+    [0:01:45] - special fat science
+    [0:02:10] - can result in the death of every brain cell
+    [0:02:20] - weird science computer, remote japanese island
+    [0:03:08] - blissful peace and quite relaxation
+    [0:03:12] - weird science interface
+    [0:24:50] - science
+    [1:04:20] - fort knox of security, encryption
+    [1:04:38] - how long will this website be available for?, legal fees
+
+https://www.youtube.com/embed/OIjtH2nttPU?autoplay=0&controls=0&playsinline=1&modestbranding=1&fs=0&rel=0&showinfo=0&origin=https%3A%2F%2Fwww.liftandtighten.com&enablejsapi=1&widgetid=1
+  [20:39] - money floating
+
+https://fast.wistia.net/embed/iframe/i4kbqiitbz
+
+toenail FUNGUS causing blindness & general blindness
+https://organicfungusnuker.com/?aff_id=4691&subid=446748&subid2=121891fd9566b6bbbbf4bf56cb3&subid3=49087478
+https://outbackvisionprotocol.com/?aff_id=1664738&subid=49087483
+
+HERPES
+https://herpesblitzprotocol.com/?aff_id=1664738&subid=49087998
+
+ALZIEMERS
+https://www.youtube.com/embed/8-u7izzzMZQ
+
+

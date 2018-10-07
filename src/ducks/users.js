@@ -3,6 +3,8 @@
 import { createReducer } from 'utils/redux'
 import { type Action } from 'ducks'
 
+export const INVALID_USER_CHARS = ['?', '%', '@']
+
 export type UserId = string;
 
 export type User = {
