@@ -3,14 +3,16 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux';
-import { selectors as threadSelectors } from 'ducks/threads'
+import { selectors as threadSelectors, type Thread } from 'ducks/threads'
+import { type Group as GroupType } from 'ducks/groups'
 import { map } from 'lodash'
 
 import styles from './styles.module.css';
 
-type Props = any;//{
-  // id: string
-//};
+type Props = {
+  group: GroupType,
+  threads: Array<Thread>
+};
 
 const ThreadPost = ({ thread, groupId }) => (
   <div>
@@ -25,7 +27,10 @@ class Group extends React.Component<Props> {
     const { group, threads } = this.props
     return (
       <div className={styles.container}>
-        <h2>{group.name}</h2>
+        <div className={styles.header}>
+          <h2>{group.name}</h2>
+          <Link to={`/groups/${group.id}/newThread`}>Add a thread!</Link>
+        </div>
         {map(threads, thread =>
           <ThreadPost key={thread.id} thread={thread} groupId={group.id} />
         )}

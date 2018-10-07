@@ -2,11 +2,13 @@
 
 import { createReducer } from 'utils/redux'
 
+export type Group = {
+  name: string,
+  id: string,
+};
+
 export type GroupsState = {
-  [id: string]: {
-    name: string,
-    id: string,
-  }
+  [id: string]: Group
 };
 
 

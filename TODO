@@ -1,5 +1,5 @@
+- extract buttons/inputs into components
 - better user/bot management
-- create a thread
 - upvote/downvote post
 - add time to post title
 - figure out a way to manage the storyarch of posts getting posted to a thread
@@ -11,9 +11,6 @@
 - chat "is typing"
 
 - parse comments for
-  - external links
-  - groups/threads
-  - users
   - bold/italic
   - images
 

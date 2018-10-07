@@ -8,9 +8,9 @@ type Fragment = string | React.Node;
 
 const last = (arr: Array<Fragment>): Fragment => arr[arr.length - 1]
 
-const externalLinkTest = /^(http|https):\/\/.*\..*/
-const userTest = /^@.*/
-const groupTest =/^\+.*/
+const externalLinkTest = /^(http|https):\/\/.+\..+/
+const userTest = /^@.+/
+const groupTest =/^\+.+/
 
 
 const parseFragment = (fragment: string) => {
