@@ -19,7 +19,9 @@ const cleanFragment = (fragment: string, test: RegExp) => replace(
 )
 
 
-const parseFragment = (fragment: string) => {
+type ParserFn = string => Fragment;
+
+const parseFragment: ParserFn = (fragment) => {
   if (fragment.match(externalLinkTest)) {
     return <a href={fragment} target="_blank">{fragment}</a>
 
@@ -29,7 +31,7 @@ const parseFragment = (fragment: string) => {
 
   } else if (fragment.match(groupTest)) {
     const [groupId, threadId] = cleanFragment(fragment, /^\+/).split('/')
-    console.log(groupId)
+
     const route = threadId
       ? `/groups/${groupId}/threads/${threadId}`
       : `/groups/${groupId}`
@@ -40,8 +42,18 @@ const parseFragment = (fragment: string) => {
   }
 }
 
-const combineFragments = (fragments: Array<Fragment>, f: string): Array<Fragment> => {
-  const fragment = parseFragment(f);
+// const parseString: ParserFn = fragment => {
+//   if (typeof fragment !== 'string') return fragment
+
+//   return fragment
+//     .split(' ')
+//     .map(fragment => {
+
+//     })
+// }
+
+const combineFragments = (parserFn: ParserFn) => (fragments: Array<Fragment>, f: string): Array<Fragment> => {
+  const fragment = parserFn(f);
 
   if (!fragments.length) {
     return [fragment]
@@ -62,12 +74,13 @@ const combineFragments = (fragments: Array<Fragment>, f: string): Array<Fragment
 
 type Props = { content: string };
 
+const parser = (content: string, parserFn: ParserFn) => content
+  .split(' ')
+  .reduce(combineFragments(parserFn), [])
+  .map((f, i) => <React.Fragment key={i}>{f}</React.Fragment>)
+
 export default ({ content }: Props) => (
   <React.Fragment>
-    {content
-      .split(' ')
-      .reduce(combineFragments, [])
-      .map((f, i) => <React.Fragment key={i}>{f}</React.Fragment>)
-    }
+    {parser(content, parseFragment)}
   </React.Fragment>
 )

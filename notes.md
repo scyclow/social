@@ -1,4 +1,25 @@
-I guess this is my attempt at non-linear, interactive fiction, where you read the posts of fake accounts, chat with chat bots, and try to accumulate likes/karma/whatever. And while it claims to help connect people, it just isolates you from other humans because it takes place entirely in the web browser and you're just talking with robots. Meanwhile, it uses dishonest web design patterns to try and get you addicted to checking for notifications, and pushes targetted ads for other fake websites I've done.
+
+
+themes
+
+discussion trends
+
+characters
+
+posts/threads
+
+ads
+
+progressions/events/interactions
+
+ui/features
+
+friendworld marketing
+  - we will never sell your data
+
+
+
+
 
 
 
@@ -8,7 +29,28 @@ right off the bat, it appears that gaining points/karma/likes rewards you. (need
 
 quickly, it appears that some of the accounts are robots, and others are humans (they're all robots; but it would be interesting if players are hooked up randomly to other actual human players. or, the easy version of this is to hook them up to firebase where i can talk to them)
 
-it also appears that there are several overlapping factions of people, corresponding to different ads:
+
+overarching theme:
+  - dependence on technology (addiction of social networks)
+  - technology is bad for our mental health (targeted individual people)
+  - advertisers trying to capitalize on this fear to sell you shit (preppers, evil democrats, etc)
+  the mysterious creator is just trying to sell you various shit
+  there are some saps floating around the website
+  story here is that fastcash is buying a lot of advertising - espescially on fake bullshit.
+    this means that fakebullshit is trying to get clicks to make fastcash ad revenue
+    fastcash is really the base of the ad ecosystem
+
+
+
+
+
+
+
+
+
+
+
+it appears that there are several overlapping factions of people, corresponding to different ads:
   - conservative news junkies (news)
   - crypto get-rich-quick folks (finance)
   - cult devotees (spirituality)
@@ -18,44 +60,12 @@ it also appears that there are several overlapping factions of people, correspon
   - bot hunters
   - wrestlers building up a match
   - end herpes
-
-there are also many individual characters:
-  - dream journal
-  - video game fan website
-  - hot sauce
-  - someone who builds a quick raport with you, but dissapointingly turns out to be a bot
-
-and depending on the info you give up, you see targetted ads:
-  - fastcashmoneyplus.biz
-  - fakebullshit.news articls
-  - identityrecoverymanagementsystem
-  - cult website (leading to whereisyourgodnow.xyz)
-  - penis pills/weight loss
-  - camwhore
-  - hotsauce
-  - generic repeating video mashup of tinnitus/skin sagging/etc
-  - t shirts that you can actually buy
-  - 0ms.co
-    - web development and hosting services circa 1997 (j geoff, heaven's gate)
+  - pick up artists
+    - fued with mgtows
+  - mgtows
+  - preppers
 
 
-names:
-  socialworld
-  friendworld.social
-  friendzone
-
-overarching theme:
-  the mysterious creator is just trying to sell you various shit
-  there are some saps floating around the website
-  story here is that fastcash is buying a lot of advertising - espescially on fake bullshit.
-    this means that fakebullshit is trying to get clicks to make fastcash ad revenue
-    fastcash is really the base of the ad ecosystem
-
-marketing
-  Friend world: a place to meet friends
-    - startupy manifesto article talking about the importance of making new friends. Effect of meaningful friendships on health; other social networks just want to get you addicted. They're free because you're the product.
-    - our stringent moderation policies ensure that you only see the best content
-    - our promise to you: we'll never sell your data or show you targetted ads
 
 other quirks:
   cursing on public posts can get you banned for life after some warnings
@@ -64,6 +74,7 @@ other quirks:
     "You're accaount has been deactivated.<a>view our guidlines</a>. if you think there has been a mistake, please contact a moderator"
 
 bot behavior/culture
+  - bots respond to certain words. some responses trigger other bots
   - call each other by shortened versions of their screen names
   - they clearly lie/exagerate about their personal lives; stories are inconsistent from thread to thread: "I have a great life because a, b, c"; "I have a great live because A B D"
   - some profiles are private; and you can't see their messages - it creates a hole in the dialog until you're friends with them
@@ -72,6 +83,56 @@ bot behavior/culture
   -"are you jewish?"
     "yes"
       accusation about controlling the media, or try to sell some religious shit
+
+character themes
+  - conspiracies: 7, big salt, ufos, pharmacuticals, ad network, fall of civilization, rockafeller/jews, pictures stealing soul, deep state
+  - politics: conservative (fakebullshit), liberal, libertarian
+  - dating: mgtow, pua
+  - spirituality: new age, christianity, cult, self-help
+  - health: tennitis, fat, depressed, erectile dysfunction
+  - other: fcmp, sports
+
+
+characters
+  - dejected dating guy
+    - 27, can't fund romantic success. is giving up. seems like a nice guy, but has a sort of ugly avatar, and is sort of lame, and if you chat with him, he's sort of overbearing. becomes interested in mgtows and puas
+  - mgtow 1
+    - is into mgtow, hyper conservative, really into trump, blockchain, deepstate
+  - pua 1
+    - sort of red pill-y. pushes 7 steps to dating success, subtle misogyny.
+  - conspiracy nut 1
+    - focused on the impending doom of civilization. really into preppers and calling out ad network. anti-pharmacutical industry. still pushes prepper/tinnitus ads
+  - conspiracy nut 2 (my email character)
+    - into ufos, targeted individuals, hyper anxiety, tinnitus ad; gets really freaked out when ad stealing his copy is published
+  - conspiracy nut 3 - all the conspiracy theories being floated around are really fake conspiracies, propagated to discredit the real
+  - liberal 1
+    - is a foil to conservative nuts, really into new age, self-help
+  - sports fan
+  - some sort of conspiracy theory author who
+    - seems to have all the answers, fully fleshed out theories on raw html website
+    - peter paget/am sloan type
+    - website lists like 50 books
+
+
+obvious bots
+  - are you jewish?
+  - parrot fakebullshit.news
+  - fcmp
+  - sex bots "Whooty - white booty!" without regard to what user says
+
+    - "hey sexxy ;)"
+    - "just lookin 4 hot <gender> to talk to. would you like ot have a conversation?"
+    - "enough talk. i'm soooooo horney. "
+
+
+  - a fake sex bot
+
+
+
+
+conspiracy theories:
+
+
 
 quests:
   - main quest involves piecing together a technicratic conspiracy theory where jews control the media + the financial system. fastcashmoneyplus.biz and fakebullshit.news way to achieve freedom. dating websites are designed to manipulate your sexual desires. there's some Q-like ringleader, anonymously dipersing information
@@ -90,22 +151,7 @@ quests:
     - people want you to click their fcmp link
     - you get something if you post the special text from the fastcash wallet
 
-profile
-  * based on what they fill out, they get access to a group
-  link to profile pic
-  bio
-  gender
-  age
-  list of posts
-  occupation
-  hobbies & interests
-  favorite websites
-  favorite books
-  favorite movies
-  favorite tv shows
-  favorite video games
-  religious views
-  political views
+
 
 
 sections
@@ -189,18 +235,25 @@ posts
     - no responses
     - i user responds, then "Ah yes, the <sports team>, they had a great season back in 2012 ;)"
 - dating & romance
-  - "I'm giving up"
-    a: "I'm giving up dating. I can't do it any more. I'm 27 years old, and I've never had a girlfriend. I must have been on close to 200 first dates at this point, and it's been a constant stream of failure, rejection, and shame. I don't know why it hasn't worked out for me. I have a job, and hobbies, and social skills. I'm not the most good looking guy in the world, but in far from hideous. I respect women. But nothing seems to be working. The constant treadmill of dating is making me nauseous. I can't bring myself to go on certain dates because they remind me of other failures. I used to get excited whenever I came across a pretty girl. Now I just get depressed because I know she's out of my league and will never want to date me. I feel like the only respectable thing to do at this point is to give up. "
-    b: "y'all need to man up"
-    c: "yeah, stop being such a f*cking downer"
+
+
 - politics
-  - "Trump is kicking ass and taking names"
-    a: what do you libtards think about that?
-    b: <deleted>
-    a: you would say that!
-    c: <deleted>
-    d: <deleted>
+  -
 - general
+
+    ~ ad: Is your cat dying? Find out now
+
+
+
+
+  - "They're listening to you." (after several threads have been read)
+    - "You ever notice how whevever you talk about stuff on this website, they know?"
+
+  - alien guy talks about esperience
+    - someone posts that he's just plagerizing an ad (posts ad)
+    - alien guy freaks out -- sends him down TI rabit hole
+
+  - "i'm a licensed psychiatrist. everyone has trouble getting through the day sometimes. if you need someone to talk to, i'm always free to chat"
   - "stop wasting your time"
     a: "how much time do you think you spend on the internet every day? how much do you spend in a week? a month? a year? now, how much of that time would you say was *meaningful*? i'm talking about time spent in a way that you'll look back in 10 years with no regrets. maybe you learned something from a wikipedia rabit hole. maybe you engaged in a thoughtful discussion. maybe you experienced some memorable art. people find meaning in all sorts of things, and whatever does it for you is fine. now, how much of that time spent would you consider *wasted*? mindlessly clicking around? browsing back and forth between the same four websites..."
     b: "shut up, a"
@@ -214,6 +267,11 @@ posts
     basically, an old peron trying to escape form a retirement home. when you chat them, it leads to a mini text adventure of you telling the, what to do to ge tout
 
   - "The collapse of civilization is imminent"
+  - "Nothing is as it seems"
+    a: "it seems like we have a large community of particularly intelligent people on this forum who have done a lot of their own researcht o comt o the conclusion that things aren't always as they seem. Here's a place where we can keep track of each theory"
+    ...people post small descriptions of their conspiracy theories
+  -
+
 
 
 memes
@@ -221,35 +279,34 @@ memes
   #sacredhumans
   #sleepnomore
   #bedwetters (because they're asleep)
+  #libtards & #conartists
 
   #primalman
 
 
+
+
+
+
+religion & numerology & politics
+  al x gore = satan
+  http://www.anusha.com/666.htm
+  http://www.anusha.com/tobutler.htm
+
 video
-  https://www.youtube.com/embed/dzl5NFkqmII
-    [0:01:37] - corrupt corporate machine
-    [0:01:45] - special fat science
-    [0:02:10] - can result in the death of every brain cell
-    [0:02:20] - weird science computer, remote japanese island
-    [0:03:08] - blissful peace and quite relaxation
-    [0:03:12] - weird science interface
-    [0:24:50] - science
-    [1:04:20] - fort knox of security, encryption
-    [1:04:38] - how long will this website be available for?, legal fees
+
+
+
 
 https://www.youtube.com/embed/OIjtH2nttPU?autoplay=0&controls=0&playsinline=1&modestbranding=1&fs=0&rel=0&showinfo=0&origin=https%3A%2F%2Fwww.liftandtighten.com&enablejsapi=1&widgetid=1
   [20:39] - money floating
 
 https://fast.wistia.net/embed/iframe/i4kbqiitbz
 
-toenail FUNGUS causing blindness & general blindness
-https://organicfungusnuker.com/?aff_id=4691&subid=446748&subid2=121891fd9566b6bbbbf4bf56cb3&subid3=49087478
-https://outbackvisionprotocol.com/?aff_id=1664738&subid=49087483
 
-HERPES
-https://herpesblitzprotocol.com/?aff_id=1664738&subid=49087998
 
-ALZIEMERS
-https://www.youtube.com/embed/8-u7izzzMZQ
 
+
+666 cult conspiracy theory
+https://www.youtube.com/watch?v=jmHNnCDvKf4
 

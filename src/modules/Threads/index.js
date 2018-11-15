@@ -41,7 +41,7 @@ class Thread extends React.Component<Props, ComponentState> {
         <div>
           <textarea
             className={styles.contentInput}
-            placeholder="Add a comment"
+            placeholder="Join the conversation..."
             onChange={e => this.setState({ content: e.target.value })}
             value={this.state.content}
           />
@@ -57,7 +57,7 @@ class Thread extends React.Component<Props, ComponentState> {
               this.setState({ content: '' })
             }}
           >
-            submit post
+            Post Reply
           </button>
         </div>
       </div>

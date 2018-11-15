@@ -5,6 +5,7 @@
   "devDependencies": {
     "flow-bin": "^0.80.0",
     "flow-typed": "^2.5.1",
+    "glow": "^1.2.2",
     "react-scripts": "next"
   },
   "dependencies": {
@@ -26,6 +27,7 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "flow": "flow",
+    "glow": "glow --watch",
     "flow-typed:update": "flow-typed update"
   },
   "browserslist": {
